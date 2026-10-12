@@ -154,29 +154,80 @@ function ProductCards() {
           </div>
         </div>
 
-        {/* Non-Destructive Workflow */}
+        {/* Auto Scene Backup */}
         <div className={styles.toolCard}>
           <div className={styles.cardHeader}>
-            <span className={styles.cardIcon}>🧩</span>
+            <span className={styles.cardIcon}>💾</span>
             <Heading as="h3" className={styles.cardTitle}>
-              Non-Destructive Design
+              Auto Scene Backup
             </Heading>
           </div>
           <div className={styles.tagRow}>
-            <span className={styles.tag}>Modular</span>
-            <span className={styles.tag}>Clean Hierarchy</span>
-            <span className={styles.tag}>Safe</span>
+            <span className={styles.tag}>Unity Utility</span>
+            <span className={styles.tag}>Safety</span>
+            <span className={styles.tag}>Preview</span>
           </div>
           <p className={styles.cardDescription}>
-            Built with modern non-destructive avatar design principles.
-            Your original base FBX, animations, and controller structures remain clean and unaltered.
+            Automatic interval scene backups to prevent work loss and provide easy recovery points before major edits.
           </p>
           <div className={styles.cardFooter}>
             <Link
               className="button button--sm button--secondary"
-              to="/docs/intro"
+              to="/docs/tools/auto-scene-backup"
             >
-              Explore Docs
+              Learn More
+            </Link>
+          </div>
+        </div>
+
+        {/* Avatar Optimization Helper */}
+        <div className={styles.toolCard}>
+          <div className={styles.cardHeader}>
+            <span className={styles.cardIcon}>📊</span>
+            <Heading as="h3" className={styles.cardTitle}>
+              Avatar Optimization Helper
+            </Heading>
+          </div>
+          <div className={styles.tagRow}>
+            <span className={styles.tag}>Performance</span>
+            <span className={styles.tag}>Analysis</span>
+            <span className={styles.tag}>Preview</span>
+          </div>
+          <p className={styles.cardDescription}>
+            Inspect and optimize avatar performance ranks (materials, skinned meshes, PhysBones) with non-destructive tips.
+          </p>
+          <div className={styles.cardFooter}>
+            <Link
+              className="button button--sm button--secondary"
+              to="/docs/tools/avatar-optimization-helper"
+            >
+              Learn More
+            </Link>
+          </div>
+        </div>
+
+        {/* Import Highlighter */}
+        <div className={styles.toolCard}>
+          <div className={styles.cardHeader}>
+            <span className={styles.cardIcon}>✨</span>
+            <Heading as="h3" className={styles.cardTitle}>
+              Import Highlighter
+            </Heading>
+          </div>
+          <div className={styles.tagRow}>
+            <span className={styles.tag}>Project Org</span>
+            <span className={styles.tag}>Workflow</span>
+            <span className={styles.tag}>Preview</span>
+          </div>
+          <p className={styles.cardDescription}>
+            Quickly locate, filter, and organize newly imported assets, textures, and prefabs in large avatar projects.
+          </p>
+          <div className={styles.cardFooter}>
+            <Link
+              className="button button--sm button--secondary"
+              to="/docs/tools/import-highlighter"
+            >
+              Learn More
             </Link>
           </div>
         </div>

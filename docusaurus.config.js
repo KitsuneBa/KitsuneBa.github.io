@@ -18,7 +18,11 @@ const config = {
   trailingSlash: false,
 
   onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
+  },
 
   i18n: {
     defaultLocale: 'en',
@@ -31,12 +35,12 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: './sidebars.js',
+          sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: 'docs',
         },
         blog: false, // You can enable this later if you want a blog/updates section
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: require.resolve('./src/css/custom.css'),
         },
       }),
     ],
@@ -95,35 +99,47 @@ const config = {
                 to: '/docs/toggle-accelerator',
               },
               {
-                label: 'VPM Listing for VCC/ALCOM',
-                to: '/docs/vpm-listing',
+                label: 'Auto Scene Backup',
+                to: '/docs/tools/auto-scene-backup',
+              },
+              {
+                label: 'Avatar Optimization Helper',
+                to: '/docs/tools/avatar-optimization-helper',
+              },
+              {
+                label: 'Import Highlighter',
+                to: '/docs/tools/import-highlighter',
               },
             ],
           },
           {
-            title: 'GitHub Repositories',
+            title: 'VPM Repository',
             items: [
               {
-                label: 'ToggleAccelerator',
-                href: 'https://github.com/KitsuneBa/ToggleAccelerator',
+                label: 'Add to VCC / ALCOM',
+                to: '/docs/vpm-listing',
               },
               {
-                label: 'KitsuneBaTools',
+                label: 'KitsuneBaTools Listing',
                 href: 'https://github.com/KitsuneBa/KitsuneBaTools',
               },
             ],
           },
           {
-            title: 'Community',
+            title: 'Community & Code',
             items: [
               {
                 label: 'GitHub Profile',
                 href: 'https://github.com/KitsuneBa',
               },
+              {
+                label: 'ToggleAccelerator Source',
+                href: 'https://github.com/KitsuneBa/ToggleAccelerator',
+              },
             ],
           },
         ],
-        copyright: `Copyright © 2026 KitsuneBa. Built with Docusaurus.`,
+        copyright: `Copyright © 2026 KitsuneBa`,
       },
     }),
 };
