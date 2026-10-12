@@ -210,40 +210,6 @@ function ProductCards() {
             </a>
           </div>
         </div>
-
-        {/* Comfortable Resting Scene */}
-        <div className={styles.toolCard}>
-          <div className={styles.cardHeader}>
-            <span className={styles.cardIcon}>🏮</span>
-            <Heading as="h3" className={styles.cardTitle}>
-              Comfortable Resting Scene
-            </Heading>
-          </div>
-          <div className={styles.tagRow}>
-            <span className={styles.tag}>Environment</span>
-            <span className={styles.tag}>Additive Scene</span>
-            <span className={styles.tag}>Workspace</span>
-          </div>
-          <p className={styles.cardDescription}>
-            Work on your avatars in a minimalist, pleasant home room environment that loads additively alongside your active avatar scene.
-          </p>
-          <div className={styles.cardFooter}>
-            <Link
-              className="button button--sm button--primary"
-              to="/docs/comfortable-resting-scene"
-            >
-              Learn More
-            </Link>
-            <a
-              className="button button--sm button--outline button--secondary"
-              href="https://github.com/KitsuneBa/KitsuneBaTools"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub
-            </a>
-          </div>
-        </div>
       </div>
     </section>
   );

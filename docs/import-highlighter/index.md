@@ -6,15 +6,6 @@ sidebar_label: Overview & Usage
 
 **Import Highlighter** automatically tracks newly imported, moved/renamed, and deleted assets in your Unity project and highlights them directly inside the **Project Window**—so you never lose track of where a `.unitypackage` unpacked its folders and files.
 
-<div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', margin: '1.25rem 0' }}>
-  <a className="button button--primary" href="vcc://vpm/addRepo?url=https://kitsuneba.github.io/KitsuneBaTools/index.json" style={{ textDecoration: 'none' }}>
-    ⚡ Install via VCC / ALCOM
-  </a>
-  <a className="button button--outline button--secondary" href="https://github.com/KitsuneBa/ImportHighlighter" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-    GitHub Repository
-  </a>
-</div>
-
 ---
 
 ## 🛠️ How It Works

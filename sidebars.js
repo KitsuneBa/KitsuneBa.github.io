@@ -10,7 +10,6 @@ const sidebars = {
       collapsed: false,
       items: [
         'intro',
-        'vpm-listing',
       ],
     },
     {
@@ -53,15 +52,6 @@ const sidebars = {
       items: [
         'auto-scene-backup/index',
         'auto-scene-backup/configuration',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Comfortable Resting Scene',
-      collapsible: true,
-      collapsed: false,
-      items: [
-        'comfortable-resting-scene/index',
       ],
     },
   ],

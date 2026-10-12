@@ -1,48 +1,27 @@
 ---
-sidebar_label: Overview & Analysis
+sidebar_label: Overview & Usage
 ---
 
 # Avatar Optimization Helper
 
 **Avatar Optimization Helper** is an all-in-one Unity editor window that inspects your VRChat avatars and Animator Controllers, calculates a detailed performance score, and provides one-click tools to reduce VRAM usage, clean materials, and locate heavy components.
 
-<div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', margin: '1.25rem 0' }}>
-  <a className="button button--primary" href="vcc://vpm/addRepo?url=https://kitsuneba.github.io/KitsuneBaTools/index.json" style={{ textDecoration: 'none' }}>
-    ⚡ Install via VCC / ALCOM
-  </a>
-  <a className="button button--outline button--secondary" href="https://github.com/KitsuneBa/AvatarOptimizationHelper" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-    GitHub Repository
-  </a>
-</div>
-
 ---
 
-## 🛠️ Opening the Tool
+## 🛠️ How It Works
 
-1. In Unity, go to the top menu bar:
+1. In Unity, open the window from the top menu bar:
    **Tools &rarr; 🦊KitsuneBa's Tools🦊 &rarr; 🦊Avatar Optimization Helper🦊**
 2. Drag and drop one or more **Avatars** (`GameObject` from your Hierarchy) or **Animator Controllers** (`RuntimeAnimatorController` from your Project window) into the drop zone at the top of the window.
 3. Use the **Targets** list to switch between analyzed objects or remove them when finished.
 
 ---
 
-## 📊 Tab 1: Analysis
+## ✨ Key Features
 
-The **Analysis** tab gives you an immediate breakdown of what is impacting your avatar's frame time and rank:
-
-### Performance Score
-* Computes a comprehensive numerical score and performance grade (`Excellent`, `Good`, `Medium`, `Poor`, `VeryPoor`, `ExtremelyPoor`, `CriticallyPoor`, `FPSKiller`).
-* Includes checkboxes to toggle **Controllers** and **Components** scoring independently so you can isolate animator overhead vs. mesh/component overhead.
-
-### Components Analysis
-* Compares every avatar metric (Triangles, Skinned Meshes, Material Slots, PhysBone Components, Affected Transforms, Colliders, Collision Check Count, Contacts, Constraints, Lights, Audio Sources, Particle Systems) against:
-  * Standard **VRChat PC** thresholds
-  * **Quest / Mobile** thresholds (toggleable)
-  * **Suggested by KitsuneBa** recommended targets (toggleable)
-
-### Controllers Analysis
-* Deep-scans all Animator Controllers on your avatar (including sub-state machines and blend trees) and reports:
-  * Total Animators, Controllers, Layers, States, Sub-State Machines, and Behaviours
-  * **Write Defaults** `ON` vs. `OFF` state counts
-  * Total Transitions, Self-Transitions, **AnyState** Transitions, Conditions, and Blend Trees
-* Includes a **sortable per-layer table** (sort by Layer Order, Weight, States, AnyState, Transitions, or Conditions) so you can immediately spot your heaviest FX layers.
+* **Overall Performance Score & Grade:** Evaluates both avatar components and Animator Controllers into a clear score and grade (`Excellent` through `FPSKiller`) with independent toggles to isolate component vs. controller overhead.
+* **PC, Mobile & Suggested Thresholds:** Compares triangles, skinned meshes, material slots, PhysBones, contacts, constraints, lights, and particles against standard VRChat limits and **Suggested by KitsuneBa** targets.
+* **Deep Animator Controller Breakdown:** Counts total layers, states, sub-state machines, transitions, AnyState transitions, conditions, and Write Defaults (`ON` vs. `OFF`), with a sortable per-layer table to pinpoint heavy FX layers.
+* **One-Click Material & Texture Optimization:** Batch-compress textures, strip unused serialized material properties, configure **lilToon** / **Poiyomi** shadow casting and distance fade, adjust render queues, and create 1-click material backups.
+* **Hierarchy Component Finder:** Search and sort your avatar's hierarchy by component type (`VRCPhysBone`, `SkinnedMeshRenderer`, `VRCParentConstraint`, `VRCContactReceiver`, etc.) and triangle/vertex count.
+* **Exact Mesh & Texture VRAM Calculator:** Calculates the exact GPU memory footprint (in MB) for every mesh (Base + BlendShapes) and texture on your avatar.

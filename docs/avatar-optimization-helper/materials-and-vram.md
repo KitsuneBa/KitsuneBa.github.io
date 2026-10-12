@@ -1,10 +1,33 @@
 ---
-sidebar_label: Materials, Finder & VRAM
+sidebar_label: Analysis, Materials & VRAM
 ---
 
-# Materials, Finder & VRAM
+# Analysis, Materials & VRAM
 
-Beyond performance scoring, **Avatar Optimization Helper** provides dedicated tabs for optimizing materials, hunting down specific components, and measuring exact VRAM consumption.
+**Avatar Optimization Helper** is organized into dedicated tabs for performance scoring, material optimization, hierarchy searching, and VRAM measurement.
+
+---
+
+## 📊 Tab 1: Analysis
+
+The **Analysis** tab gives you an immediate breakdown of what is impacting your avatar's frame time and rank:
+
+### Performance Score
+* Computes a comprehensive numerical score and performance grade (`Excellent`, `Good`, `Medium`, `Poor`, `VeryPoor`, `ExtremelyPoor`, `CriticallyPoor`, `FPSKiller`).
+* Includes checkboxes to toggle **Controllers** and **Components** scoring independently so you can isolate animator overhead vs. mesh/component overhead.
+
+### Components Analysis
+* Compares every avatar metric (Triangles, Skinned Meshes, Material Slots, PhysBone Components, Affected Transforms, Colliders, Collision Check Count, Contacts, Constraints, Lights, Audio Sources, Particle Systems) against:
+  * Standard **VRChat PC** thresholds
+  * **Quest / Mobile** thresholds (toggleable)
+  * **Suggested by KitsuneBa** recommended targets (toggleable)
+
+### Controllers Analysis
+* Deep-scans all Animator Controllers on your avatar (including sub-state machines and blend trees) and reports:
+  * Total Animators, Controllers, Layers, States, Sub-State Machines, and Behaviours
+  * **Write Defaults** `ON` vs. `OFF` state counts
+  * Total Transitions, Self-Transitions, **AnyState** Transitions, Conditions, and Blend Trees
+* Includes a **sortable per-layer table** (sort by Layer Order, Weight, States, AnyState, Transitions, or Conditions) so you can immediately spot your heaviest FX layers.
 
 ---
 
