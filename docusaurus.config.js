@@ -38,7 +38,7 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: 'docs',
         },
-        blog: false, // You can enable this later if you want a blog/updates section
+        blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -67,16 +67,6 @@ const config = {
             label: 'Documentation',
           },
           {
-            to: '/docs/toggle-accelerator',
-            label: 'Toggle Accelerator',
-            position: 'left',
-          },
-          {
-            to: '/docs/vpm-listing',
-            label: 'VPM Repository',
-            position: 'left',
-          },
-          {
             href: 'https://github.com/KitsuneBa/KitsuneBaTools',
             label: 'KitsuneBaTools',
             position: 'right',
@@ -90,55 +80,7 @@ const config = {
       },
       footer: {
         style: 'dark',
-        links: [
-          {
-            title: 'Tools',
-            items: [
-              {
-                label: 'Toggle Accelerator',
-                to: '/docs/toggle-accelerator',
-              },
-              {
-                label: 'Auto Scene Backup',
-                to: '/docs/tools/auto-scene-backup',
-              },
-              {
-                label: 'Avatar Optimization Helper',
-                to: '/docs/tools/avatar-optimization-helper',
-              },
-              {
-                label: 'Import Highlighter',
-                to: '/docs/tools/import-highlighter',
-              },
-            ],
-          },
-          {
-            title: 'VPM Repository',
-            items: [
-              {
-                label: 'Add to VCC / ALCOM',
-                to: '/docs/vpm-listing',
-              },
-              {
-                label: 'KitsuneBaTools Listing',
-                href: 'https://github.com/KitsuneBa/KitsuneBaTools',
-              },
-            ],
-          },
-          {
-            title: 'Community & Code',
-            items: [
-              {
-                label: 'GitHub Profile',
-                href: 'https://github.com/KitsuneBa',
-              },
-              {
-                label: 'ToggleAccelerator Source',
-                href: 'https://github.com/KitsuneBa/ToggleAccelerator',
-              },
-            ],
-          },
-        ],
+        links: [],
         copyright: `Copyright © 2026 KitsuneBa`,
       },
     }),

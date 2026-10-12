@@ -1,41 +1,38 @@
+---
+sidebar_label: Overview & Setup
+---
+
 # Toggle Accelerator
 
-**Toggle Accelerator** is an editor utility that speeds up and simplifies the creation of avatar toggles when working with **VRCFury** and **Modular Avatar**.
+**Toggle Accelerator** is a Unity component and editor workflow designed to dramatically speed up the creation of toggles, radial puppets, material changes, blendshape controls, and world-space freezes for VRChat avatars.
+
+It works seamlessly whether you prefer **Standalone** animator generation, **Modular Avatar**, **VRCFury**, or **Instant** baking.
+
+<div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', margin: '1.25rem 0' }}>
+  <a className="button button--primary" href="vcc://vpm/addRepo?url=https://kitsuneba.github.io/KitsuneBaTools/index.json" style={{ textDecoration: 'none' }}>
+    ⚡ Install via VCC / ALCOM
+  </a>
+  <a className="button button--outline button--secondary" href="https://github.com/KitsuneBa/ToggleAccelerator" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+    GitHub Repository
+  </a>
+</div>
 
 ---
 
-## ⚡ Overview
+## 🛠️ Adding Toggle Accelerator to Your Avatar
 
-Creating toggles on VRChat avatars often involves repetitive tasks:
-* Setting up game objects
-* Creating animation clips
-* Creating parameters and expression menus
-* Configuring non-destructive components
-
-**Toggle Accelerator** bundles these workflows into a quick, intuitive inspector interface so you can configure toggles in seconds.
+1. Ensure the **KitsuneBa's Tools** VPM repository is added to your project and **KitsuneBa's Toggle Accelerator** is installed.
+2. Select your avatar root (or a child GameObject inside your avatar hierarchy).
+3. In the Inspector, click **Add Component** &rarr; **KitsuneBa** &rarr; **Toggle Accelerator** (or search `Toggle Accelerator`).
+4. Create a **Toggle Group** for each menu toggle, button, or radial puppet you want on your avatar, and add target entries inside the group.
 
 ---
 
-## 📥 Installation
+## ✨ Key Highlights
 
-### Via VCC / ALCOM (Recommended)
-1. Ensure you have added the [KitsuneBa's Tools repository](/docs/vpm-listing) to your package manager.
-2. Open your avatar project in **VCC** or **ALCOM**.
-3. Under **Manage Packages**, find **KitsuneBa's Toggle Accelerator**.
-4. Click **Add** (or **+**).
-
-### Requirements
-* **Unity:** 2019.4 or 2022.3 (matching VRChat Avatar SDK)
-* **VRChat Avatar SDK 3.0**
-* One or both of:
-  * [VRCFury](https://vrcfury.com)
-  * [Modular Avatar](https://modular-avatar.nadena.dev)
-
----
-
-## 🚀 Quick Usage
-
-1. In your Unity Hierarchy, select the GameObject / clothing item / prop you want to toggle.
-2. In the Inspector, click **Add Component**.
-3. Search for and add **Toggle Accelerator**.
-4. Configure your toggle settings and apply.
+* **6 Built-In Toggle Modes:** Combine **Object**, **BlendShape**, **Material Swap**, **Material Property**, **World Freeze**, and **Component** toggles within the same group.
+* **Flexible Build Modes:** Output directly as **Standalone** (non-destructive on build), **Modular Avatar**, **VRCFury**, or **Instant** baked assets.
+* **Smooth Transitions & Delays:** Add linear, exponential, or bounce transitions—or custom ON/OFF delays—without building manual blend trees or state machines.
+* **Parameter Modifiers (Exclusive Gates):** Easily turn other toggles ON or OFF automatically when a group activates using `+Param` and `-Param` syntax.
+* **Interactive Menu Tree Visualizer:** Preview and organize your VRChat Expressions Menu hierarchy directly inside the component inspector, including detected VRCFury and Modular Avatar menu items.
+* **Live Editor Preview:** Test any toggle group non-destructively right inside the Scene view before entering Play Mode or building.

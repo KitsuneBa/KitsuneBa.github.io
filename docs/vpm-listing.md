@@ -8,11 +8,11 @@ You can easily add the **KitsuneBa's Tools** repository to your VRChat Creator C
 
 If you are browsing on the computer where VCC or ALCOM is installed:
 
-<p>
+<div style={{ display: 'flex', alignItems: 'center', margin: '1.25rem 0' }}>
   <a className="button button--primary button--lg" href="vcc://vpm/addRepo?url=https://kitsuneba.github.io/KitsuneBaTools/index.json" style={{ textDecoration: 'none' }}>
     🦊 Add to VCC / ALCOM
   </a>
-</p>
+</div>
 
 Your browser will ask for permission to open the VCC or ALCOM application. Click **Open**, and the client will prompt you to confirm adding **KitsuneBa's Tools**.
 
@@ -49,4 +49,4 @@ If the 1-click link does not open:
 
 ## 🔄 Updating Packages
 
-Once the repository is added, any new updates released to **Toggle Accelerator** or upcoming tools will automatically appear in your package manager list with an **Update** button.
+Once the repository is added, any new updates or upcoming tools will automatically appear in your package manager list with an **Update** button.

@@ -1,31 +1,38 @@
 /**
- * KitsuneBa's Tools - Custom CSS Theme
+ * KitsuneBa's Tools - Custom CSS Theme (Pastel Pink / Purple)
  */
 
 :root {
-  --ifm-color-primary: #eb5e28;
-  --ifm-color-primary-dark: #d94e19;
-  --ifm-color-primary-darker: #cc4917;
-  --ifm-color-primary-darkest: #a83c13;
-  --ifm-color-primary-light: #ee7242;
-  --ifm-color-primary-lighter: #f07b4f;
-  --ifm-color-primary-lightest: #f49774;
+  --ifm-color-primary: #b854a6;
+  --ifm-color-primary-dark: #a64895;
+  --ifm-color-primary-darker: #9c448d;
+  --ifm-color-primary-darkest: #813874;
+  --ifm-color-primary-light: #c468b4;
+  --ifm-color-primary-lighter: #ca74bb;
+  --ifm-color-primary-lightest: #db9bd0;
+  --ifm-background-color: #ffffff;
+  --ifm-card-background-color: #ffffff;
   --ifm-code-font-size: 92%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.05);
+  --docusaurus-highlighted-code-line-bg: rgba(184, 84, 166, 0.08);
   --ifm-font-family-base: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 [data-theme='dark'] {
-  --ifm-color-primary: #f26419;
-  --ifm-color-primary-dark: #df550d;
-  --ifm-color-primary-darker: #d3510c;
-  --ifm-color-primary-darkest: #ad420a;
-  --ifm-color-primary-light: #f47936;
-  --ifm-color-primary-lighter: #f58445;
-  --ifm-color-primary-lightest: #f7a371;
+  --ifm-color-primary: #eb8cd1;
+  --ifm-color-primary-dark: #e46ec4;
+  --ifm-color-primary-darker: #e060bd;
+  --ifm-color-primary-darkest: #d136a7;
+  --ifm-color-primary-light: #f2aae0;
+  --ifm-color-primary-lighter: #f5b8e5;
+  --ifm-color-primary-lightest: #fce4f6;
   --ifm-background-color: #0f1115;
   --ifm-card-background-color: #16181e;
-  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.05);
+  --docusaurus-highlighted-code-line-bg: rgba(235, 140, 209, 0.1);
+}
+
+/* Hide heading '#' anchor links */
+.hash-link {
+  display: none !important;
 }
 
 /* Navbar styling */
@@ -35,7 +42,7 @@
 }
 
 [data-theme='dark'] .navbar {
-  background-color: rgba(15, 17, 21, 0.85);
+  background-color: rgba(15, 17, 21, 0.88);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -48,11 +55,11 @@
   border-radius: 6px;
 }
 
-/* Footer styling */
+/* Compact Footer styling */
 .footer {
   border-top: 1px solid var(--ifm-color-emphasis-200);
-  padding-top: 3.5rem;
-  padding-bottom: 3.5rem;
+  padding: 1.5rem 0;
+  background-color: #f8f9fa;
 }
 
 [data-theme='dark'] .footer {
@@ -60,33 +67,56 @@
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.footer__title {
-  color: var(--ifm-color-primary);
-  font-size: 0.95rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 1rem;
-}
-
 .footer__bottom {
-  margin-top: 2.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
 }
 
 .footer__copyright {
   font-size: 0.9rem;
-  color: var(--ifm-color-emphasis-500);
+  color: var(--ifm-color-emphasis-600);
 }
 
 /* Sidebar styling */
 .menu__link--active:not(.menu__link--sublist) {
-  background: rgba(242, 100, 25, 0.15) !important;
+  background: rgba(235, 140, 209, 0.15) !important;
   color: var(--ifm-color-primary) !important;
   font-weight: 600;
 }
 
+/* Button alignment & pastel pink/purple styling */
+.button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1.2 !important;
+  vertical-align: middle !important;
+  padding: 0.65rem 1.25rem;
+}
+
+.button--sm {
+  padding: 0.45rem 0.95rem;
+  font-size: 0.85rem;
+}
+
+.button--lg {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.05rem;
+}
+
 .button--primary {
+  background: linear-gradient(135deg, #d972c0 0%, #9b6dff 100%) !important;
+  color: #ffffff !important;
+  border: none !important;
   font-weight: 600;
+  box-shadow: 0 3px 12px rgba(185, 110, 230, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease !important;
+}
+
+.button--primary:hover {
+  color: #ffffff !important;
+  opacity: 0.94;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 16px rgba(185, 110, 230, 0.4);
 }

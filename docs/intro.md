@@ -1,6 +1,6 @@
-# Welcome to KitsuneBa's Tools
+# KitsuneBa's Tools
 
-A collection of lightweight, workflow-enhancing tools designed to make creating and customizing VRChat avatars faster, cleaner, and less tedious.
+A collection of lightweight, workflow-enhancing tools designed to make creating, optimizing, and customizing VRChat avatars faster, cleaner, and less tedious.
 
 ---
 
@@ -11,8 +11,8 @@ The recommended way to install and stay updated with my tools is through the **V
 ### 1-Click Install to VCC
 Click the button below to automatically add the package repository to your VCC or ALCOM client:
 
-<div style={{ margin: '1.5rem 0' }}>
-  <a className="button button--primary button--lg" href="vcc://vpm/addRepo?url=https://kitsuneba.github.io/KitsuneBaTools/index.json" style={{ marginRight: '1rem', textDecoration: 'none' }}>
+<div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center', margin: '1.5rem 0' }}>
+  <a className="button button--primary button--lg" href="vcc://vpm/addRepo?url=https://kitsuneba.github.io/KitsuneBaTools/index.json" style={{ textDecoration: 'none' }}>
     ⚡ Add Repository to VCC / ALCOM
   </a>
   <a className="button button--secondary button--lg" href="/docs/vpm-listing" style={{ textDecoration: 'none' }}>
@@ -22,18 +22,8 @@ Click the button below to automatically add the package repository to your VCC o
 
 ---
 
-## 📦 Featured Tools
-
-### [Toggle Accelerator](/docs/toggle-accelerator)
-Speeds up the creation of toggles for **VRCFury**, **Modular Avatar**, and custom setups.
-* Eliminate repetitive manual menu, parameter, and animation clipping steps.
-* Seamless integration into Unity editor inspector.
-* Fast toggle creation with just a few clicks.
-
----
-
 ## 🛠️ Requirements & Compatibility
-All tools are tested against standard VRChat avatar creation environments:
-* **Unity:** 2019.4 / 2022.3 (VRChat current LTS)
-* **VRChat Avatar SDK:** 3.x
+All tools are built and tested against current VRChat avatar creation environments:
+* **Unity:** `2022.3.22f1`
+* **VRChat Avatar SDK:** `3.10.5`
 * Compatible with modern non-destructive frameworks (**VRCFury**, **Modular Avatar**, **NDMF**)

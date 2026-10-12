@@ -1,17 +1,28 @@
+---
+sidebar_label: FAQ
+---
+
 # Frequently Asked Questions
 
-Common questions and troubleshooting tips for **Toggle Accelerator**.
+### Do I need both VRCFury and Modular Avatar installed?
+No! **Toggle Accelerator** works completely on its own in **Standalone** or **Instant** mode, or can integrate with **Modular Avatar** and/or **VRCFury** if you have them installed in your project.
 
 ---
 
-### Does Toggle Accelerator modify my original FBX or textures?
-**No.** It functions purely through Unity components and non-destructive frameworks. Your original avatar files remain untouched.
+### Does Toggle Accelerator modify my original avatar files?
+When using **Standalone**, **Modular Avatar**, or **VRCFury** build modes, Toggle Accelerator processes everything non-destructively at build time. Your original avatar prefab and scene hierarchy remain clean. If you use **Instant** mode, generated assets are saved neatly into `Assets/!KitsuneBa/ToggleAccelerator/Generated`.
 
-### Can I use this together with VRCFury and Modular Avatar in the same project?
-**Yes.** Toggle Accelerator supports both systems, allowing you to choose the mode that matches your current avatar structure.
+---
 
-### How do I update to the latest version?
-Open your project in **VRChat Creator Companion (VCC)** or **ALCOM**, check the **Manage Packages** list, and click **Update** next to *KitsuneBa's Toggle Accelerator*.
+### How do I make an exclusive outfit toggle (where turning one outfit ON turns another OFF)?
+Use **Parameter Modifiers** in the Group Name field! Append `-OtherGroupName` to your group's parameter name to automatically turn off `OtherGroupName` when the group is enabled, or `+OtherGroupName` to turn it on.
 
-### Where can I report an issue or suggest a feature?
-You can open an issue directly on the [ToggleAccelerator GitHub Issues page](https://github.com/KitsuneBa/ToggleAccelerator/issues).
+---
+
+### How do I delete hidden body mesh under clothes?
+Add a **BlendShape** target entry for the body shrink/hide blendshape on your body mesh, and set its target value to **DEL** (`-1`). At build time, vertices moved by that blendshape will be stripped from the mesh.
+
+---
+
+### Where should I report bugs or request features?
+Please open an issue on the [Toggle Accelerator GitHub Repository](https://github.com/KitsuneBa/ToggleAccelerator/issues).

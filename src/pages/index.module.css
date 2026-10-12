@@ -1,9 +1,9 @@
 .heroBanner {
-  padding: 4.5rem 1.5rem;
+  padding: 4rem 1.5rem;
   text-align: center;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(180deg, rgba(235, 100, 30, 0.08) 0%, rgba(20, 20, 30, 0) 100%);
+  background: linear-gradient(180deg, rgba(235, 140, 209, 0.1) 0%, rgba(155, 109, 255, 0.04) 50%, rgba(20, 20, 30, 0) 100%);
   border-bottom: 1px solid var(--ifm-color-emphasis-200);
 }
 
@@ -12,7 +12,7 @@
   height: 96px;
   margin-bottom: 1.25rem;
   border-radius: 18px;
-  box-shadow: 0 8px 24px rgba(235, 100, 30, 0.25);
+  box-shadow: 0 8px 24px rgba(217, 114, 192, 0.28);
 }
 
 .heroTitle {
@@ -39,19 +39,20 @@
 }
 
 .buttonVcc {
-  background: #eb5e28 !important;
+  background: linear-gradient(135deg, #d972c0 0%, #9b6dff 100%) !important;
   color: #fff !important;
   border: none !important;
   font-weight: 700 !important;
   padding: 0.75rem 1.5rem !important;
   border-radius: 10px !important;
-  box-shadow: 0 4px 14px rgba(235, 94, 40, 0.35);
+  box-shadow: 0 4px 14px rgba(185, 110, 230, 0.35);
   transition: transform 0.15s ease, box-shadow 0.15s ease !important;
 }
 
 .buttonVcc:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(235, 94, 40, 0.5);
+  box-shadow: 0 6px 20px rgba(185, 110, 230, 0.5);
+  color: #fff !important;
 }
 
 .buttonSecondary {
@@ -100,8 +101,8 @@
 
 .toolCard:hover {
   transform: translateY(-4px);
-  border-color: #eb5e28;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 12px 30px rgba(185, 110, 230, 0.14);
 }
 
 .cardHeader {
@@ -133,8 +134,8 @@
   font-weight: 600;
   padding: 0.2rem 0.6rem;
   border-radius: 6px;
-  background: rgba(235, 94, 40, 0.12);
-  color: #eb5e28;
+  background: rgba(217, 114, 192, 0.14);
+  color: var(--ifm-color-primary);
 }
 
 .cardDescription {
@@ -148,26 +149,6 @@
 .cardFooter {
   display: flex;
   gap: 0.75rem;
-}
-
-.urlBarContainer {
-  margin-top: 2rem;
-  background: var(--ifm-card-background-color);
-  border: 1px solid var(--ifm-color-emphasis-200);
-  border-radius: 12px;
-  padding: 1rem 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.urlText {
-  font-family: var(--ifm-font-family-monospace);
-  font-size: 0.95rem;
-  color: var(--ifm-color-emphasis-800);
-  word-break: break-all;
 }
 
 @media (max-width: 768px) {

@@ -57,17 +57,6 @@ function HomepageHero() {
             📖 Read Docs
           </Link>
         </div>
-
-        <div className={styles.urlBarContainer} style={{ maxWidth: 760, margin: '2.5rem auto 0 auto' }}>
-          <span className={styles.urlText}>{VPM_REPO_URL}</span>
-          <button
-            type="button"
-            className="button button--sm button--secondary"
-            onClick={handleCopy}
-          >
-            {copied ? 'Copied!' : 'Copy'}
-          </button>
-        </div>
       </div>
     </header>
   );
@@ -97,11 +86,10 @@ function ProductCards() {
           <div className={styles.tagRow}>
             <span className={styles.tag}>VRCFury</span>
             <span className={styles.tag}>Modular Avatar</span>
-            <span className={styles.tag}>VRChat</span>
+            <span className={styles.tag}>Standalone</span>
           </div>
           <p className={styles.cardDescription}>
-            Speeds up the creation of toggles for VRCFury and Modular Avatar.
-            Quickly generate clothes, accessories, and prop toggles in seconds directly inside Unity.
+            Speeds up the creation of toggles, radial puppets, material swaps, blendshapes, and world-space freezes for VRCFury, Modular Avatar, or standalone animator setups.
           </p>
           <div className={styles.cardFooter}>
             <Link
@@ -121,35 +109,70 @@ function ProductCards() {
           </div>
         </div>
 
-        {/* VPM Package Repository */}
+        {/* Avatar Optimization Helper */}
         <div className={styles.toolCard}>
           <div className={styles.cardHeader}>
-            <span className={styles.cardIcon}>📦</span>
+            <span className={styles.cardIcon}>📊</span>
             <Heading as="h3" className={styles.cardTitle}>
-              VPM Repository
+              Avatar Optimization Helper
             </Heading>
           </div>
           <div className={styles.tagRow}>
-            <span className={styles.tag}>VCC</span>
-            <span className={styles.tag}>ALCOM</span>
-            <span className={styles.tag}>Auto-Updates</span>
+            <span className={styles.tag}>Performance</span>
+            <span className={styles.tag}>VRAM & Materials</span>
+            <span className={styles.tag}>Analysis</span>
           </div>
           <p className={styles.cardDescription}>
-            Official package repository listing for Creator Companion and ALCOM.
-            Install and receive automatic updates for all KitsuneBa tools in one centralized place.
+            Analyze avatar components, Animator Controllers, texture & mesh VRAM footprint, and optimize materials with one-click cleanup and compression tools.
           </p>
           <div className={styles.cardFooter}>
             <Link
               className="button button--sm button--primary"
-              to="/docs/vpm-listing"
+              to="/docs/avatar-optimization-helper"
             >
-              Install Guide
+              Learn More
             </Link>
             <a
               className="button button--sm button--outline button--secondary"
-              href={VCC_DEEP_LINK}
+              href="https://github.com/KitsuneBa/AvatarOptimizationHelper"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Add to VCC
+              GitHub
+            </a>
+          </div>
+        </div>
+
+        {/* Import Highlighter */}
+        <div className={styles.toolCard}>
+          <div className={styles.cardHeader}>
+            <span className={styles.cardIcon}>✨</span>
+            <Heading as="h3" className={styles.cardTitle}>
+              Import Highlighter
+            </Heading>
+          </div>
+          <div className={styles.tagRow}>
+            <span className={styles.tag}>Project Window</span>
+            <span className={styles.tag}>Asset Tracking</span>
+            <span className={styles.tag}>Workflow</span>
+          </div>
+          <p className={styles.cardDescription}>
+            Automatically highlights newly imported, moved, or deleted folders and files directly in the Unity Project window with smooth fade-out timers and instant ping navigation.
+          </p>
+          <div className={styles.cardFooter}>
+            <Link
+              className="button button--sm button--primary"
+              to="/docs/import-highlighter"
+            >
+              Learn More
+            </Link>
+            <a
+              className="button button--sm button--outline button--secondary"
+              href="https://github.com/KitsuneBa/ImportHighlighter"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
             </a>
           </div>
         </div>
@@ -163,72 +186,62 @@ function ProductCards() {
             </Heading>
           </div>
           <div className={styles.tagRow}>
+            <span className={styles.tag}>Scene Safety</span>
+            <span className={styles.tag}>Auto-Archive</span>
             <span className={styles.tag}>Unity Utility</span>
-            <span className={styles.tag}>Safety</span>
-            <span className={styles.tag}>Preview</span>
           </div>
           <p className={styles.cardDescription}>
-            Automatic interval scene backups to prevent work loss and provide easy recovery points before major edits.
+            Automatically archives timestamped copies of your Unity scenes whenever you save, organized cleanly by project, scene name, and date with configurable cooldowns.
           </p>
           <div className={styles.cardFooter}>
             <Link
-              className="button button--sm button--secondary"
-              to="/docs/tools/auto-scene-backup"
+              className="button button--sm button--primary"
+              to="/docs/auto-scene-backup"
             >
               Learn More
             </Link>
+            <a
+              className="button button--sm button--outline button--secondary"
+              href="https://github.com/KitsuneBa/AutoSceneBackup"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </a>
           </div>
         </div>
 
-        {/* Avatar Optimization Helper */}
+        {/* Comfortable Resting Scene */}
         <div className={styles.toolCard}>
           <div className={styles.cardHeader}>
-            <span className={styles.cardIcon}>📊</span>
+            <span className={styles.cardIcon}>🏮</span>
             <Heading as="h3" className={styles.cardTitle}>
-              Avatar Optimization Helper
+              Comfortable Resting Scene
             </Heading>
           </div>
           <div className={styles.tagRow}>
-            <span className={styles.tag}>Performance</span>
-            <span className={styles.tag}>Analysis</span>
-            <span className={styles.tag}>Preview</span>
+            <span className={styles.tag}>Environment</span>
+            <span className={styles.tag}>Additive Scene</span>
+            <span className={styles.tag}>Workspace</span>
           </div>
           <p className={styles.cardDescription}>
-            Inspect and optimize avatar performance ranks (materials, skinned meshes, PhysBones) with non-destructive tips.
+            Work on your avatars in a minimalist, pleasant home room environment that loads additively alongside your active avatar scene.
           </p>
           <div className={styles.cardFooter}>
             <Link
-              className="button button--sm button--secondary"
-              to="/docs/tools/avatar-optimization-helper"
+              className="button button--sm button--primary"
+              to="/docs/comfortable-resting-scene"
             >
               Learn More
             </Link>
-          </div>
-        </div>
-
-        {/* Import Highlighter */}
-        <div className={styles.toolCard}>
-          <div className={styles.cardHeader}>
-            <span className={styles.cardIcon}>✨</span>
-            <Heading as="h3" className={styles.cardTitle}>
-              Import Highlighter
-            </Heading>
-          </div>
-          <div className={styles.tagRow}>
-            <span className={styles.tag}>Project Org</span>
-            <span className={styles.tag}>Workflow</span>
-            <span className={styles.tag}>Preview</span>
-          </div>
-          <p className={styles.cardDescription}>
-            Quickly locate, filter, and organize newly imported assets, textures, and prefabs in large avatar projects.
-          </p>
-          <div className={styles.cardFooter}>
-            <Link
-              className="button button--sm button--secondary"
-              to="/docs/tools/import-highlighter"
+            <a
+              className="button button--sm button--outline button--secondary"
+              href="https://github.com/KitsuneBa/KitsuneBaTools"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Learn More
-            </Link>
+              GitHub
+            </a>
           </div>
         </div>
       </div>
@@ -237,7 +250,6 @@ function ProductCards() {
 }
 
 export default function Home() {
-  const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
       title="Home"
