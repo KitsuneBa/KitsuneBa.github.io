@@ -46,6 +46,23 @@ const config = {
     ],
   ],
 
+  themes: [
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+      ({
+        hashed: true,
+        indexBlog: false,
+        indexPages: true,
+        docsRouteBasePath: 'docs',
+        highlightSearchTermsOnTargetPage: true,
+        searchBarShortcut: false,
+        searchBarShortcutHint: false,
+        searchBarPosition: 'right',
+      }),
+    ],
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -67,14 +84,39 @@ const config = {
             label: 'Documentation',
           },
           {
-            href: 'https://github.com/KitsuneBa/KitsuneBaTools',
-            label: 'KitsuneBaTools',
+            href: 'https://x.com/kitsune_ba',
             position: 'right',
+            className: 'header-icon-link header-x-link',
+            'aria-label': 'X (Twitter)',
+            title: 'X (Twitter)',
+          },
+          {
+            href: 'https://bsky.app/profile/kitsuneba.bsky.social',
+            position: 'right',
+            className: 'header-icon-link header-bsky-link',
+            'aria-label': 'Bluesky',
+            title: 'Bluesky',
+          },
+          {
+            href: 'https://kitsuneba.booth.pm',
+            position: 'right',
+            className: 'header-icon-link header-booth-link',
+            'aria-label': 'BOOTH Shop',
+            title: 'BOOTH Shop',
+          },
+          {
+            href: 'https://ko-fi.com/kitsuneba',
+            position: 'right',
+            className: 'header-icon-link header-kofi-link',
+            'aria-label': 'Ko-fi',
+            title: 'Ko-fi',
           },
           {
             href: 'https://github.com/KitsuneBa',
-            label: 'GitHub',
             position: 'right',
+            className: 'header-icon-link header-github-link',
+            'aria-label': 'GitHub',
+            title: 'GitHub',
           },
         ],
       },
