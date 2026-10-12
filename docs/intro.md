@@ -8,14 +8,14 @@ A collection of lightweight, workflow-enhancing tools designed to make creating,
 
 ---
 
-## ⚡ Method 1: One-Click Add (Recommended)
+## ⚡ Method 1: One-Click Add
 
 The recommended way to install and stay updated with my tools is through the **VRChat Creator Companion (VCC)** or **ALCOM**.
 
 Click the button below to automatically add the package repository to your client:
 
 <div style={{ display: 'flex', alignItems: 'center', margin: '1.25rem 0' }}>
-  <a className="button button--primary button--lg" href="vcc://vpm/addRepo?url=https://kitsuneba.github.io/KitsuneBaTools/index.json" style={{ textDecoration: 'none' }}>⚡ Add Repository to VCC / ALCOM</a>
+  <a className="button button--primary button--lg" href="vcc://vpm/addRepo?url=https://kitsuneba.github.io/KitsuneBaTools/index.json">⚡ Add Repository to VCC / ALCOM</a>
 </div>
 
 Your browser will ask for permission to open the VCC or ALCOM application. Click **Open**, and the client will prompt you to confirm adding **KitsuneBa's Tools**.
@@ -31,7 +31,7 @@ If the 1-click link does not open automatically:
    https://kitsuneba.github.io/KitsuneBaTools/index.json
    ```
 2. Open **VRChat Creator Companion (VCC)**.
-3. Go to **Settings** (gear icon on the bottom left).
+3. Go to **Settings** on the bottom left.
 4. Select the **Packages** tab.
 5. Click **Add Repository** in the top right.
 6. Paste the URL into the input field and click **Add**.
@@ -45,7 +45,7 @@ If the 1-click link does not open automatically:
    https://kitsuneba.github.io/KitsuneBaTools/index.json
    ```
 2. Open **ALCOM**.
-3. Go to **Settings** &rarr; **Repositories**.
+3. Go to **Settings** → **Repositories**.
 4. Click **Add Repository**.
 5. Paste the listing URL and confirm.
 

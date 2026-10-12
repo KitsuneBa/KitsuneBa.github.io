@@ -10,16 +10,16 @@ sidebar_label: Overview & Usage
 
 ## 🛠️ How It Works
 
-1. Once installed, **Auto Scene Backup** hooks into Unity's scene-saving pipeline (`EditorSceneManager.sceneSaved`).
+1. Once installed, **Auto Scene Backup** hooks into Unity's scene-saving pipeline.
 2. Whenever you save a modified scene, it automatically copies the `.unity` scene file into an organized archive directory with the current date and time.
 3. To open the configuration and log window, go to:
-   **Tools &rarr; 🦊KitsuneBa's Tools🦊 &rarr; 🦊Auto Scene Backup🦊**
+   **Tools → 🦊KitsuneBa's Tools🦊 → 🦊Auto Scene Backup🦊**
 
 ---
 
 ## ✨ Key Features
 
-* **Zero Interruption:** Backups happen instantaneously when you already press `Ctrl + S`—no unexpected editor freezes while you are in the middle of posing or editing.
-* **Smart Cooldown Timer:** Prevents filling up your disk if you spam `Ctrl + S` multiple times in a row.
-* **Organized Folder Hierarchy:** Automatically sorts backups by **Project Name**, **Scene Name**, and **Date (`YYYY-MM-DD`)**.
+* **Zero Interruption:** Backups happen instantaneously when you already press `Ctrl + S`, with no unexpected editor freezes while you are in the middle of posing or editing.
+* **Smart Cooldown Timer:** Prevents filling up your disk if you press `Ctrl + S` multiple times in a row.
+* **Organized Folder Hierarchy:** Automatically sorts backups by **Project Name**, **Scene Name**, and **Date**.
 * **Live Action Log:** Inspect recent backups and skipped-save cooldown notifications directly inside the tool window.

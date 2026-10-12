@@ -10,24 +10,24 @@ In **Toggle Accelerator**, controls are organized into **Toggle Groups**. Each g
 
 ## 🎛️ Toggle Group Controls
 
-* **Toggle Name & Submenu Path (`groupToggleName`):**
+* **Toggle Name & Submenu Path:**
   * The label shown in your VRChat Expressions Menu.
-  * **Submenus with Slashes (`/`):** Use forward slashes directly in the name to place the control inside nested submenus (for example, `Outfit/Shoes/Boots` automatically creates the `Outfit` and `Shoes` submenus and places `Boots` inside).
-* **Parameter Name (`groupParamName`) & Value (`groupValue`):**
-  * Leave **Parameter Name** blank to auto-generate a parameter from the toggle name, or specify a custom parameter name to share parameters across multiple groups or drive them via PhysBones/OSC.
-  * Set **Value** (`groupValue`) when multiple groups share the same parameter (such as integer outfit slots `1`, `2`, `3` or radial slider thresholds `0.25`, `0.5`, `0.75`).
-  * **Parameter Modifiers (`+` / `-`):** Append `+OtherParam` or `-OtherParam` to automatically turn other toggle groups ON or OFF when this group is activated.
+  * **Submenus with Slashes:** Use forward slashes `/` directly in the name to place the control inside nested submenus. For example, `Outfit/Shoes/Boots` automatically creates the `Outfit` and `Shoes` submenus and places `Boots` inside.
+* **Parameter Name & Value:**
+  * Leave **Parameter Name** blank to auto-generate a parameter from the toggle name, or specify a custom parameter name to share parameters across multiple groups or drive them via PhysBones and OSC.
+  * Set **Value** when multiple groups share the same parameter, such as integer outfit slots (`1`, `2`, `3`) or radial slider thresholds (`0.25`, `0.5`, `0.75`).
+  * **Parameter Modifiers:** Append `+OtherParam` or `-OtherParam` to automatically turn other toggle groups ON or OFF when this group is activated.
 * **Control Type:**
   * **Toggle:** Standard on/off menu toggle.
-  * **Button (`isButton`):** Momentary hold button—active while held, turns off when released.
-  * **Radial (`Off` / `Linear` / `Stepped`):** Converts the control into a `0%–100%` radial puppet wheel with a configurable default starting value.
+  * **Button:** Momentary hold button that stays active while held and turns off when released.
+  * **Radial:** Converts the control into a `0%` to `100%` radial puppet wheel (`Linear` or `Stepped`) with a configurable default starting value.
 * **State & Visibility Options:**
   * **Default On:** Enables the toggle by default when the avatar loads.
   * **Saved:** Remembers your selection across world hops and avatar resets.
   * **Synced:** Synchronizes the toggle state across the network to other players.
-  * **Friend (`IsOnFriendsList`):** Restricts the toggle's visual effect so it is only visible to you and players on your VRChat friends list.
+  * **Friend:** Restricts the toggle's visual effect so it is only visible to you and players on your VRChat friends list.
 * **Smooth Transitions & Delays:**
-  * Choose from `Off`, `Smooth Linear`, `Smooth Exponential`, `Bounce Linear`, `Bounce Exponential`, or `Delay` (with independent **Delay On** and **Delay Off** durations in seconds).
+  * Choose from `Off`, `Smooth Linear`, `Smooth Exponential`, `Bounce Linear`, `Bounce Exponential`, or `Delay` with independent **Delay On** and **Delay Off** durations in seconds.
 
 ---
 
@@ -35,31 +35,31 @@ In **Toggle Accelerator**, controls are organized into **Toggle Groups**. Each g
 
 Inside any Toggle Group, you can mix and match targets using six built-in modes:
 
-### 1. Object (`Object` & `Transform`)
-* Enables or disables a `GameObject` (`SetActive`).
+### 1. Object
+* Enables or disables a target `GameObject` in your hierarchy.
 * **Transform Mode:** Animate local **Position**, **Rotation**, and **Scale** on a target object, with a helper button to record transform coordinates directly from the Scene view.
 
-### 2. BlendShape (`BlendShape`)
+### 2. BlendShape
 * Animates any BlendShape on a `SkinnedMeshRenderer` to a target weight (`0` to `100`).
-* **Mesh Deletion (`DEL` / `-1`):** Set the weight to `DEL` (`-1`) to delete/strip the vertices affected by that BlendShape at build time—ideal for removing hidden body mesh underneath clothing to prevent clipping and improve performance.
+* **Mesh Deletion (`DEL`):** Set the weight to `DEL` (or `-1`) to strip the vertices affected by that BlendShape at build time. This is ideal for removing hidden body mesh underneath clothing to prevent clipping and improve performance.
 
-### 3. Material Swap (`MaterialSwap`)
+### 3. Material Swap
 * Replaces the material in a specific **Material Slot Index** on a renderer.
 * **Scope Modes:**
   * `THIS`: Swaps the material only on the selected renderer.
-  * `SHAR` (Shared Objects): Swaps the material across a specified group of renderers sharing that material.
+  * `SHAR`: Swaps the material across a specified group of renderers sharing that material.
   * `ALL`: Automatically swaps matching materials across all renderers on the avatar.
 
-### 4. Material Property (`MaterialProperty`)
+### 4. Material Property
 * Animates shader properties directly without duplicating materials:
   * **Float / Range:** Animate sliders such as dissolve, alpha, or emission strength.
-  * **Color:** Animate standard or HDR color properties (e.g. `_Color`).
-  * **Vector / ST:** Animate `Vector4` properties or texture tiling & offset (`_ST`).
+  * **Color:** Animate standard or HDR color properties (such as `_Color`).
+  * **Vector / ST:** Animate `Vector4` properties or texture tiling and offset (`_ST`).
 
-### 5. World Freeze (`WorldFreeze`)
+### 5. World Freeze
 * Locks a target object, bone chain, or `SkinnedMeshRenderer` in world space when toggled ON using VRChat constraints.
 
-### 6. Component (`Component`)
+### 6. Component
 * Enables or disables specific components on a `GameObject`, such as `VRCPhysBone`, `VRCPhysBoneCollider`, `VRCContactReceiver`, `VRCParentConstraint`, or `AudioSource`.
 
 ---
@@ -69,22 +69,22 @@ Inside any Toggle Group, you can mix and match targets using six built-in modes:
 Below are practical ways to combine Toggle Accelerator's features for everyday avatar setups:
 
 ### 1. Independent vs. Shared Outfit Toggles
-* **Independent Toggles:** Create one group per item (e.g. `Outfit/Accessories/Glasses`, `Outfit/Accessories/Hat`) with default settings so each piece can be toggled on and off freely.
+* **Independent Toggles:** Create one group per item (such as `Outfit/Accessories/Glasses` and `Outfit/Accessories/Hat`) with default settings so each piece can be toggled on and off freely.
 * **Shared Toggles:** Drag multiple objects (for example, left and right shoes, or multiple armor pieces) into a single group so one menu button toggles all of them together.
 
-### 2. Exclusive ("One at a Time") & Mix-and-Match Outfits
-There are two ways to make clothing or accessories turn each other off automatically, and you can even combine them:
-* **Same Category (Shared Parameter + Value):** If you have several options for the same slot (e.g. `Bra 1`, `Bra 2`, `Bra 3` or `Shoes 1`, `Shoes 2`), give every group in that category the exact same **Parameter Name** (e.g. `Shoes`) and assign each group a unique **Value** (`1`, `2`, `3`...). Only one option in that category can be active at a time.
-* **Cross-Category Rules (`+` / `-` Modifiers):** If putting on a specific `Top` should automatically turn off `Bra`, set the top's parameter name to `Top-Bra` (with its own value). When activated, it switches to that top *and* disables `Bra` automatically.
+### 2. Exclusive & Mix-and-Match Outfits
+There are two ways to make clothing or accessories turn each other off automatically, and you can combine them:
+* **Same Category:** If you have several options for the same slot (such as `Bra 1`, `Bra 2`, `Bra 3` or `Shoes 1`, `Shoes 2`), give every group in that category the exact same **Parameter Name** (e.g. `Shoes`) and assign each group a unique **Value** (`1`, `2`, `3`...). Only one option in that category can be active at a time.
+* **Cross-Category Rules:** If putting on a specific `Top` should automatically turn off `Bra`, set the top's parameter name to `Top-Bra` along with its own value. When activated, it switches to that top and disables `Bra` automatically.
 
-### 3. Radial Sliders (Smooth Color Blending & Multi-Step Wheels)
-* **Smooth Shader / BlendShape Sliders:** Enable **Radial (Linear)** on a group and add **Material Property** (`_Color`, emission, dissolve) or **BlendShape** targets to smoothly scrub between `0%` and `100%`.
+### 3. Radial Sliders
+* **Smooth Shader / BlendShape Sliders:** Enable **Radial** (`Linear`) on a group and add **Material Property** or **BlendShape** targets to smoothly scrub between `0%` and `100%`.
 * **Multi-Item Radial Selector:** Create multiple groups that share the same **Toggle Name** and **Parameter Name** with **Radial** enabled, and give each group a different **Value** threshold (such as `0.25`, `0.50`, `0.75`). Scrubbing a single radial wheel in VRChat will step through each item across the dial.
 
 ### 4. PhysBone Stretch & Reactive Triggers
-* **PhysBone Grab / Stretch Triggers:** If a `VRCPhysBone` on your avatar has its parameter set to `TopPull`, Unity/VRChat automatically provides `TopPull_Stretch` (`0.0` to `1.0`). By setting a Toggle Group's parameter to `+TopPull_Stretch` and its **Value** to `0.9` with **Radial** enabled, stretching that PhysBone past `90%` will automatically trigger the group's objects or blendshapes!
-* **Reactive Trigger Objects (AAP):** Using **Trigger Objects** (`Any` or `Every` condition mode), you can make body shrink blendshapes or secondary props activate automatically whenever specific clothing objects are turned on or off anywhere on the avatar.
+* **PhysBone Grab / Stretch Triggers:** If a `VRCPhysBone` on your avatar has its parameter set to `TopPull`, VRChat automatically provides `TopPull_Stretch` (`0.0` to `1.0`). By setting a Toggle Group's parameter to `+TopPull_Stretch` and its **Value** to `0.9` with **Radial** enabled, stretching that PhysBone past `90%` will automatically trigger the group's objects or blendshapes.
+* **Reactive Trigger Objects:** Using **Trigger Objects** (`Any` or `Every` condition mode), you can make body shrink blendshapes or secondary props activate automatically whenever specific clothing objects are turned on or off anywhere on the avatar.
 
 ### 5. Stylized Transitions & World-Space Effects
 * **Object Pop / Smooth Transitions:** Combine an **Object** toggle and a **Transform** offset with **Smooth Exponential** or **Bounce** mode so props smoothly scale, slide, or pop into place instead of snapping instantly.
-* **Stop-Motion / Low-Framerate Effect:** Combine **World Freeze** on a mesh with **Bounce Linear** and short **Delay On / Delay Off** intervals (or a radial speed control) to create a stylized low-framerate / stop-motion animation effect in VRChat.
+* **Stop-Motion / Low-Framerate Effect:** Combine **World Freeze** on a mesh with **Bounce Linear** and short **Delay On / Delay Off** intervals to create a stylized low-framerate or stop-motion animation effect in VRChat.

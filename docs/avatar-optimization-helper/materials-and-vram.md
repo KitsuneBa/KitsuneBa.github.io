@@ -14,13 +14,13 @@ The **Analysis** tab gives you an immediate breakdown of what is impacting your 
 
 ### Performance Score
 * Computes a comprehensive numerical score and performance grade (`Excellent`, `Good`, `Medium`, `Poor`, `VeryPoor`, `ExtremelyPoor`, `CriticallyPoor`, `FPSKiller`).
-* Includes checkboxes to toggle **Controllers** and **Components** scoring independently so you can isolate animator overhead vs. mesh/component overhead.
+* Includes checkboxes to toggle **Controllers** and **Components** scoring independently so you can isolate animator overhead vs. mesh and component overhead.
 
 ### Components Analysis
 * Compares every avatar metric (Triangles, Skinned Meshes, Material Slots, PhysBone Components, Affected Transforms, Colliders, Collision Check Count, Contacts, Constraints, Lights, Audio Sources, Particle Systems) against:
   * Standard **VRChat PC** thresholds
-  * **Quest / Mobile** thresholds (toggleable)
-  * **Suggested by KitsuneBa** recommended targets (toggleable)
+  * **Quest / Mobile** thresholds
+  * **Suggested by KitsuneBa** recommended targets
 
 ### Controllers Analysis
 * Deep-scans all Animator Controllers on your avatar (including sub-state machines and blend trees) and reports:
@@ -37,7 +37,7 @@ The **Materials** tab includes four specialized sub-utilities for cleaning up sh
 
 ### 1. Texture Optimization
 * Scans all textures used by your avatar and lets you filter by **Max Size** (`32` up to `8192`).
-* Batch-configure **Compression Quality** (`None`, `Low`, `Normal`, `High`) and optional **Crunch Compression** (`0–100` quality).
+* Batch-configure **Compression Quality** (`None`, `Low`, `Normal`, `High`) and optional **Crunch Compression** (`0` to `100` quality).
 * **Lock Individual Textures:** Protect specific masks, normal maps, or UI textures from batch changes.
 * Choose to apply optimizations immediately or **Optimize On Build**.
 
@@ -54,7 +54,7 @@ The **Materials** tab includes four specialized sub-utilities for cleaning up sh
 
 ---
 
-## 🔍 Tab 3: Finder (Component Finder)
+## 🔍 Tab 3: Finder
 
 Quickly search your avatar hierarchy for specific components without expanding dozens of armature bones:
 
@@ -69,7 +69,7 @@ Quickly search your avatar hierarchy for specific components without expanding d
 Get an accurate breakdown of how much GPU memory your avatar uses:
 
 * **Mesh VRAM:** Lists every mesh on your avatar with its **Vertex Count**, **Triangle Count**, **BlendShape Count**, **Base MB**, **BlendShape MB**, and **Total MB**.
-* **Texture VRAM:** Lists every texture referenced by your avatar's materials/animators with its **Format**, **Resolution**, **MipMap status**, **Crunch status**, and exact **Memory (MB)** footprint.
+* **Texture VRAM:** Lists every texture referenced by your avatar's materials and animators with its **Format**, **Resolution**, **MipMap status**, **Crunch status**, and exact **Memory (MB)** footprint.
 
 ---
 

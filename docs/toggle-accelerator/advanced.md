@@ -12,8 +12,8 @@ sidebar_label: Build Modes & Helpers
 
 At the top of the **Toggle Accelerator** inspector, you can choose between four **Build Modes**:
 
-1. **Standalone (Default):**
-   * Non-destructively generates animator layers, clips, parameters, and expression menus automatically when you upload or test your avatar (via NDMF / VRChat SDK build hooks).
+1. **Standalone:**
+   * Non-destructively generates animator layers, clips, parameters, and expression menus automatically when you upload or test your avatar.
    * Requires no external third-party avatar frameworks.
 2. **Modular Avatar:**
    * Generates native **Modular Avatar** components (`MA Menu Item`, `MA Merge Animator`, `MA Parameters`, `MA Shape Changer`, etc.) so your toggles integrate directly into a Modular Avatar pipeline.
@@ -28,9 +28,9 @@ At the top of the **Toggle Accelerator** inspector, you can choose between four 
 
 Each Toggle Group can use the optimization strategy that best fits your avatar:
 
-* **Optimize (Default):** Consolidates toggles into efficient layer structures to keep frame time low.
+* **Optimize:** Consolidates toggles into efficient layer structures to keep frame time low.
 * **Bake:** Bakes static or single-state changes directly into the avatar at build time where possible, eliminating runtime animator overhead.
-* **AAP (Animated Animator Parameters):** Packs multiple toggles and reactive **Trigger Object** conditions (`Any` or `Every`) into highly optimized Direct BlendTrees so dozens of toggles and reactive rules run in minimal animator layers.
+* **AAP:** Uses Animated Animator Parameters to pack multiple toggles and reactive **Trigger Object** conditions (`Any` or `Every`) into Direct BlendTrees so dozens of toggles and reactive rules run in minimal animator layers.
 * **AssetOptimizer:** Structures layers for maximum compatibility with external build-time avatar optimizers.
 * **None:** Generates standard individual 2-state animator layers per toggle group.
 
@@ -46,7 +46,7 @@ Each Toggle Group can use the optimization strategy that best fits your avatar:
 
 ## 🧰 Helper Components
 
-In addition to the main component, the package includes two helper components under **Add Component &rarr; KitsuneBa**:
+In addition to the main component, the package includes two helper components under **Add Component → KitsuneBa**:
 
 ### Toggle Accelerator Submenu Merger
 * Redirects or merges expression submenus into a target `VRCExpressionsMenu` asset or custom menu path during build, making it easy to combine menus from multiple prefabs into one clean folder.
