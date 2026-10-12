@@ -1,0 +1,180 @@
+.heroBanner {
+  padding: 4.5rem 1.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(235, 100, 30, 0.08) 0%, rgba(20, 20, 30, 0) 100%);
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.heroLogo {
+  width: 96px;
+  height: 96px;
+  margin-bottom: 1.25rem;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(235, 100, 30, 0.25);
+}
+
+.heroTitle {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+
+.heroSubtitle {
+  font-size: 1.35rem;
+  color: var(--ifm-color-emphasis-700);
+  max-width: 680px;
+  margin: 0 auto 2rem auto;
+  line-height: 1.5;
+}
+
+.heroButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.buttonVcc {
+  background: #eb5e28 !important;
+  color: #fff !important;
+  border: none !important;
+  font-weight: 700 !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 14px rgba(235, 94, 40, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.buttonVcc:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(235, 94, 40, 0.5);
+}
+
+.buttonSecondary {
+  border-radius: 10px !important;
+  padding: 0.75rem 1.5rem !important;
+  font-weight: 600 !important;
+}
+
+.featuresSection {
+  padding: 4rem 1.5rem;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sectionTitle {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.sectionSubtitle {
+  font-size: 1.1rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.75rem;
+}
+
+.toolCard {
+  background: var(--ifm-card-background-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.toolCard:hover {
+  transform: translateY(-4px);
+  border-color: #eb5e28;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.cardIcon {
+  font-size: 2rem;
+}
+
+.cardTitle {
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.tagRow {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  background: rgba(235, 94, 40, 0.12);
+  color: #eb5e28;
+}
+
+.cardDescription {
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.98rem;
+  line-height: 1.55;
+  flex-grow: 1;
+  margin-bottom: 1.75rem;
+}
+
+.cardFooter {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.urlBarContainer {
+  margin-top: 2rem;
+  background: var(--ifm-card-background-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.urlText {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.95rem;
+  color: var(--ifm-color-emphasis-800);
+  word-break: break-all;
+}
+
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 2.25rem;
+  }
+  .heroSubtitle {
+    font-size: 1.1rem;
+  }
+}
