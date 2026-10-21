@@ -4,7 +4,7 @@ sidebar_label: Toggle Modes & Setups
 
 # Toggle Modes & Setups
 
-In **Toggle Accelerator**, controls are organized into **Toggle Groups**. Each group can act as a standard Toggle, a momentary Button, a Radial Puppet slider, or a reactive rule, and can drive any combination of **6 target modes** at once.
+In **Toggle Accelerator**, controls are organized into **Toggle Groups**. Each group can act as a standard Toggle, a momentary Button, a Radial Puppet slider, or a reactive rule, and can drive any combination of target modes at once.
 
 ---
 
@@ -31,36 +31,35 @@ In **Toggle Accelerator**, controls are organized into **Toggle Groups**. Each g
 
 ---
 
-## 🧩 The 6 Target Modes
+## 🧩 Target Modes
 
-Inside any Toggle Group, you can mix and match targets using six built-in modes:
+Inside any Toggle Group, you can mix and match targets across five versatile modes:
 
-### 1. Object
-* Enables or disables a target `GameObject` in your hierarchy.
-* **Transform Mode:** Animate local **Position**, **Rotation**, and **Scale** on a target object, with a helper button to record transform coordinates directly from the Scene view.
+### 1. Toggle (`TG`)
+The primary toggle mode combines GameObject activation, Transform movement, and individual Component toggles into one clean interface:
+* **GameObject:** Toggles a target `GameObject` ON or OFF in your avatar hierarchy.
+* **Transform:** Animates local **Position**, **Rotation**, and **Scale** on the target object. Click the **TRAN** button to open the transform settings. You can enter values manually or use the interactive **Record** button to position, rotate, and scale objects directly in the Unity Scene view while Toggle Accelerator captures the coordinates.
+* **Component:** Toggles specific components ON or OFF (such as `VRCPhysBone`, `VRCPhysBoneCollider`, `VRCContactReceiver`, `VRCParentConstraint`, `AudioSource`, `Light`, or `ParticleSystem`) without having to disable the parent GameObject.
 
-### 2. BlendShape
+### 2. BlendShape (`BS`)
 * Animates any BlendShape on a `SkinnedMeshRenderer` to a target weight (`0` to `100`).
 * **Mesh Deletion (`DEL`):** Set the weight to `DEL` (or `-1`) to strip the vertices affected by that BlendShape at build time. This is ideal for removing hidden body mesh underneath clothing to prevent clipping and improve performance.
 
-### 3. Material Swap
+### 3. Material Swap (`MS`)
 * Replaces the material in a specific **Material Slot Index** on a renderer.
 * **Scope Modes:**
   * `THIS`: Swaps the material only on the selected renderer.
   * `SHAR`: Swaps the material across a specified group of renderers sharing that material.
   * `ALL`: Automatically swaps matching materials across all renderers on the avatar.
 
-### 4. Material Property
+### 4. Material Property (`MP`)
 * Animates shader properties directly without duplicating materials:
   * **Float / Range:** Animate sliders such as dissolve, alpha, or emission strength.
   * **Color:** Animate standard or HDR color properties (such as `_Color`).
   * **Vector / ST:** Animate `Vector4` properties or texture tiling and offset (`_ST`).
 
-### 5. World Freeze
+### 5. World Freeze (`WF`)
 * Locks a target object, bone chain, or `SkinnedMeshRenderer` in world space when toggled ON using VRChat constraints.
-
-### 6. Component
-* Enables or disables specific components on a `GameObject`, such as `VRCPhysBone`, `VRCPhysBoneCollider`, `VRCContactReceiver`, `VRCParentConstraint`, or `AudioSource`.
 
 ---
 
@@ -86,5 +85,5 @@ There are two ways to make clothing or accessories turn each other off automatic
 * **Reactive Trigger Objects:** Using **Trigger Objects** (`Any` or `Every` condition mode), you can make body shrink blendshapes or secondary props activate automatically whenever specific clothing objects are turned on or off anywhere on the avatar.
 
 ### 5. Stylized Transitions & World-Space Effects
-* **Object Pop / Smooth Transitions:** Combine an **Object** toggle and a **Transform** offset with **Smooth Exponential** or **Bounce** mode so props smoothly scale, slide, or pop into place instead of snapping instantly.
+* **Object Pop / Smooth Transitions:** Combine **Toggle** (Transform) settings with **Smooth Exponential** or **Bounce** mode so props smoothly scale, slide, or pop into place instead of snapping instantly.
 * **Stop-Motion / Low-Framerate Effect:** Combine **World Freeze** on a mesh with **Bounce Linear** and short **Delay On / Delay Off** intervals to create a stylized low-framerate or stop-motion animation effect in VRChat.

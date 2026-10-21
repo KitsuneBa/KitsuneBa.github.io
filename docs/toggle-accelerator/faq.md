@@ -5,7 +5,9 @@ sidebar_label: FAQ
 # Frequently Asked Questions
 
 ### Do I need VRCFury or Modular Avatar installed to use Toggle Accelerator?
-No! **Toggle Accelerator** works completely on its own in **Standalone** or **Instant** mode. If you do have **Modular Avatar** or **VRCFury** installed in your project, you can optionally switch the Build Mode to output native components for those frameworks, or keep using **Standalone** alongside them.
+Yes, VRCFury and Modular Avatar should be present in your Unity project. Because Toggle Accelerator is built with direct integrations for both frameworks, Unity requires their assemblies to compile without missing reference errors.
+
+However, you do not have to use them to build your avatar: Toggle Accelerator can build and run completely in its own native **Standalone** or **Instant** build mode without routing through VRCFury or Modular Avatar.
 
 ---
 

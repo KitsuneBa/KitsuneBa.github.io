@@ -44,12 +44,28 @@ Each Toggle Group can use the optimization strategy that best fits your avatar:
 
 ---
 
-## 🧰 Helper Components
+## ⚡ Quick Build & Full Build
 
-In addition to the main component, the package includes two helper components under **Add Component → KitsuneBa**:
+In the footer of the Toggle Accelerator inspector, you can generate an avatar test clone directly in your scene with one click to test your toggles in Gesture Manager or inspect the generated setup:
 
-### Toggle Accelerator Submenu Merger
-* Redirects or merges expression submenus into a target `VRCExpressionsMenu` asset or custom menu path during build, making it easy to combine menus from multiple prefabs into one clean folder.
+* **Quick Build:** Builds an editor test copy near-instantly by running VRChat SDK and Toggle Accelerator build hooks while stripping heavy third-party optimizers (such as mesh combiners and texture bakes). This gives you a fast test copy in seconds without waiting for lengthy optimization steps.
+* **Full Build:** Builds a complete editor test copy with all components and third-party optimizers running in full.
+
+Both buttons automatically clone the avatar, run the non-destructive build preprocessing, disable the original avatar, and select the test copy in your hierarchy so you can immediately test it in Play Mode or inspect the generated Animator Controllers and parameters.
+
+---
+
+## 🧰 Helper Components (Build Helpers)
+
+Toggle Accelerator is designed to work as a single main component on your avatar root or prefab. You do not need to add helper components manually.
+
+During the avatar build process, Toggle Accelerator automatically generates and manages helper components behind the scenes:
 
 ### Toggle Accelerator World Freeze
-* Standalone helper component for configuring world-space constraint freezes on specific avatar objects, props, or bone chains, with automatic hierarchy reference re-binding.
+* An internal helper component automatically created and attached during the build pipeline to resolve world-space parent constraints after Modular Avatar and VRCFury finish their processing.
+* Implements `IEditorOnly` so it never uploads to VRChat or bloats avatar file size.
+* Can also be inspected or added manually if you need standalone world-space constraint freezing on custom bone chains with automatic hierarchy reference re-binding.
+
+### Toggle Accelerator Submenu Merger
+* Generated during the build pipeline to automatically redirect and merge nested expression submenus across prefabs and folders into the final VRCExpressionsMenu layout.
+* Ensures toggles distributed across multiple sub-prefabs integrate into cohesive menu folders without manual menu merging.
