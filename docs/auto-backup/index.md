@@ -2,18 +2,18 @@
 sidebar_label: Overview & Usage
 ---
 
-# Auto Scene Backup
+# Auto Backup
 
-**Auto Scene Backup** automatically creates timestamped backup copies of your Unity scene whenever you save (`Ctrl + S`), protecting your avatar project from accidental edits, broken prefabs, or Unity crashes.
+**Auto Backup** automatically creates timestamped backup copies of your Unity scene whenever you save (`Ctrl + S`), protecting your avatar project from accidental edits, broken prefabs, or Unity crashes.
 
 ---
 
 ## 🛠️ How It Works
 
-1. Once installed, **Auto Scene Backup** hooks into Unity's scene-saving pipeline.
+1. Once installed, **Auto Backup** hooks into Unity's scene-saving pipeline.
 2. Whenever you save a modified scene, it automatically copies the `.unity` scene file into an organized archive directory with the current date and time.
 3. To open the configuration and log window, go to:
-   **Tools → 🦊KitsuneBa's Tools🦊 → 🦊Auto Scene Backup🦊**
+   **Tools → 🦊KitsuneBa's Tools🦊 → 🦊Auto Backup🦊**
 
 ---
 

@@ -177,12 +177,12 @@ function ProductCards() {
           </div>
         </div>
 
-        {/* Auto Scene Backup */}
+        {/* Auto Backup */}
         <div className={styles.toolCard}>
           <div className={styles.cardHeader}>
             <span className={styles.cardIcon}>💾</span>
             <Heading as="h3" className={styles.cardTitle}>
-              Auto Scene Backup
+              Auto Backup
             </Heading>
           </div>
           <div className={styles.tagRow}>
@@ -196,13 +196,13 @@ function ProductCards() {
           <div className={styles.cardFooter}>
             <Link
               className="button button--sm button--primary"
-              to="/docs/auto-scene-backup"
+              to="/docs/auto-backup"
             >
               Learn More
             </Link>
             <a
               className="button button--sm button--outline button--secondary"
-              href="https://github.com/KitsuneBa/AutoSceneBackup"
+              href="https://github.com/KitsuneBa/AutoBackup"
               target="_blank"
               rel="noopener noreferrer"
             >

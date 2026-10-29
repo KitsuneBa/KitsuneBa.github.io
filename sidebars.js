@@ -46,12 +46,12 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Auto Scene Backup',
+      label: 'Auto Backup',
       collapsible: true,
       collapsed: false,
       items: [
-        'auto-scene-backup/index',
-        'auto-scene-backup/configuration',
+        'auto-backup/index',
+        'auto-backup/configuration',
       ],
     },
   ],
