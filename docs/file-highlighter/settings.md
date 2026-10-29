@@ -13,7 +13,7 @@ The **File Highlighter** window brings asset activity tracking, highlight config
 When new files are imported or removed, the main view lists all active items:
 
 * **Item Hierarchy:** Displays folders and files with visual indentation lines showing project structure.
-* **Ping & Reveal:** Click **Ping** to focus the item in the Project window, or click **Reveal** to open its folder in File Explorer.
+* **Ping & Explorer:** Click **Ping** to focus the item in the Project window, or click **Explorer** to open its folder in File Explorer.
 * **Status Badges:** Shows green `ADD` tags for added files and red `DEL` tags for deleted files.
 * **Footer Bar:** Shows live count for added and deleted items, a **Hide** button to dismiss until manually opened, and the **Settings** button.
 
