@@ -36,12 +36,12 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Import Highlighter',
+      label: 'File Highlighter',
       collapsible: true,
       collapsed: false,
       items: [
-        'import-highlighter/index',
-        'import-highlighter/settings',
+        'file-highlighter/index',
+        'file-highlighter/settings',
       ],
     },
     {

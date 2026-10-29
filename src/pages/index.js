@@ -143,12 +143,12 @@ function ProductCards() {
           </div>
         </div>
 
-        {/* Import Highlighter */}
+        {/* File Highlighter */}
         <div className={styles.toolCard}>
           <div className={styles.cardHeader}>
             <span className={styles.cardIcon}>✨</span>
             <Heading as="h3" className={styles.cardTitle}>
-              Import Highlighter
+              File Highlighter
             </Heading>
           </div>
           <div className={styles.tagRow}>
@@ -162,13 +162,13 @@ function ProductCards() {
           <div className={styles.cardFooter}>
             <Link
               className="button button--sm button--primary"
-              to="/docs/import-highlighter"
+              to="/docs/file-highlighter"
             >
               Learn More
             </Link>
             <a
               className="button button--sm button--outline button--secondary"
-              href="https://github.com/KitsuneBa/ImportHighlighter"
+              href="https://github.com/KitsuneBa/FilesHighlighter"
               target="_blank"
               rel="noopener noreferrer"
             >
