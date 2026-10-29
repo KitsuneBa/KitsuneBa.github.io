@@ -1,4 +1,4 @@
-# KitsuneBa.Website
+# KitsuneBa.github.io
 
 Official documentation and showcase website for **KitsuneBa's Tools** (VRChat avatar creation and Unity utilities).
 
