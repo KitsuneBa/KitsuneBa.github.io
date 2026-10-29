@@ -2,16 +2,16 @@
 sidebar_label: Overview & Usage
 ---
 
-# Avatar Optimization Helper
+# Optimization Helper
 
-**Avatar Optimization Helper** is an all-in-one Unity editor window that inspects your VRChat avatars and Animator Controllers, calculates a detailed performance score, and provides one-click tools to reduce VRAM usage, clean materials, and locate heavy components.
+**Optimization Helper** is an all-in-one Unity editor window that inspects your VRChat avatars and Animator Controllers, calculates a detailed performance score, and provides one-click tools to reduce VRAM usage, clean materials, and locate heavy components.
 
 ---
 
 ## 🛠️ How It Works
 
 1. In Unity, open the window from the top menu bar:
-   **Tools → 🦊KitsuneBa's Tools🦊 → 🦊Avatar Optimization Helper🦊**
+   **Tools → 🦊KitsuneBa's Tools🦊 → 🦊Optimization Helper🦊**
 2. Drag and drop one or more **Avatars** from your Hierarchy or **Animator Controllers** from your Project window into the drop zone at the top of the window.
 3. Use the **Targets** list to switch between analyzed objects or remove them when finished.
 

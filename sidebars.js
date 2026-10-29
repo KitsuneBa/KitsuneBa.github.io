@@ -26,12 +26,12 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Avatar Optimization Helper',
+      label: 'Optimization Helper',
       collapsible: true,
       collapsed: false,
       items: [
-        'avatar-optimization-helper/index',
-        'avatar-optimization-helper/materials-and-vram',
+        'optimization-helper/index',
+        'optimization-helper/materials-and-vram',
       ],
     },
     {

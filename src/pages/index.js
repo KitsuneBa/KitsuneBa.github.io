@@ -109,12 +109,12 @@ function ProductCards() {
           </div>
         </div>
 
-        {/* Avatar Optimization Helper */}
+        {/* Optimization Helper */}
         <div className={styles.toolCard}>
           <div className={styles.cardHeader}>
             <span className={styles.cardIcon}>📊</span>
             <Heading as="h3" className={styles.cardTitle}>
-              Avatar Optimization Helper
+              Optimization Helper
             </Heading>
           </div>
           <div className={styles.tagRow}>
@@ -128,13 +128,13 @@ function ProductCards() {
           <div className={styles.cardFooter}>
             <Link
               className="button button--sm button--primary"
-              to="/docs/avatar-optimization-helper"
+              to="/docs/optimization-helper"
             >
               Learn More
             </Link>
             <a
               className="button button--sm button--outline button--secondary"
-              href="https://github.com/KitsuneBa/AvatarOptimizationHelper"
+              href="https://github.com/KitsuneBa/OptimizationHelper"
               target="_blank"
               rel="noopener noreferrer"
             >

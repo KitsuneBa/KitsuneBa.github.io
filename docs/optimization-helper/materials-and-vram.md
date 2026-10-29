@@ -4,7 +4,7 @@ sidebar_label: Analysis, Materials & VRAM
 
 # Analysis, Materials & VRAM
 
-**Avatar Optimization Helper** is organized into dedicated tabs for performance scoring, material optimization, hierarchy searching, and VRAM measurement.
+**Optimization Helper** is organized into dedicated tabs for performance scoring, material optimization, hierarchy searching, and VRAM measurement.
 
 ---
 
