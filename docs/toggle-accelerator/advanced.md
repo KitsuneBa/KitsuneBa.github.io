@@ -36,6 +36,41 @@ Each Toggle Group can use the optimization strategy that best fits your avatar:
 
 ---
 
+## 🎛️ Parameter Optimizer (Param Opti)
+
+VRChat limits avatars to 256 synced bits of parameter memory. If your avatar has many outfits, props, and toggles, you can easily hit this cap.
+
+Clicking **Param Opti** in the inspector footer opens a dedicated panel that automatically optimizes your synced memory during build time:
+
+### Dynamic Bit-Width
+* Synced integer parameters are automatically compressed to use only the bits they actually need (2 to 8 bits instead of always using a full 8 bits).
+* Synced float parameters are optimized down to 7 bits on supported VRChat SDK versions without any noticeable loss in smoothness.
+
+### Multiplex Parameter Compressor
+* Rotates multiple avatar toggles through shared carrier sync slots to pack dozens of toggles into a fraction of the memory.
+* **Targeting Modes:**
+  * **Excess Toggles (Recommended):** Only compresses the parameters that push your avatar over the 256-bit budget. Everything else stays completely uncompressed for instant 0-latency response.
+  * **All Toggles:** Compresses all eligible toggles to squeeze out maximum memory savings.
+  * **Manual Toggles:** Only compresses toggle groups you explicitly choose to include.
+* **Carrier Slots & Refresh Speeds:** Choose between 8 or 16 bool slots, and set refresh cycle speeds between Fast (~0.05s), Normal (~0.10s), or Slow (~0.20s).
+
+### Exclude/Include Parameters
+* A live table in the inspector displays every synced parameter on your avatar along with its bit cost and current compression status.
+* Built-in safeguards automatically protect Hand Gestures, Emotes, Contacts, PhysBones, Button controls, and Two/Four-Axis Puppets from compression.
+* Click **+ Include**, **- Exclude**, or **Cancel** directly in the table to override any parameter with one click.
+
+---
+
+## 🎭 Layer Optimizer (Layer Opti)
+
+Clicking **Layer Opti** in the inspector footer enables automatic animator controller optimization:
+
+* Scans your FX controller during build time to find layers that only handle logic, tracking, or parameter transitions without animating any mesh transforms or blendshapes.
+* Safely migrates those behavior-only layers to the Action controller.
+* Reduces evaluation weight and overhead on the FX controller, helping your avatar run smoother in crowded worlds.
+
+---
+
 ## 🌳 Menu Visualizer & Third-Party Conversion
 
 * **Interactive Menu Tree:** The built-in menu visualizer displays your avatar's entire VRChat Expressions Menu layout right inside the inspector, including existing **Modular Avatar** and **VRCFury** menu items. You can rename menus and parameters inline and see page capacities at a glance.
