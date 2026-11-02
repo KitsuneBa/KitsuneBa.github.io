@@ -14,7 +14,7 @@ Whether you prefer working completely **Standalone**, integrating with **Modular
 
 1. Ensure the **KitsuneBa's Tools** repository is installed in your project via VCC or ALCOM.
 2. Select your avatar root or any child GameObject inside your avatar hierarchy.
-3. In the Inspector, click **Add Component → KitsuneBa → Toggle Accelerator**.
+3. In the Inspector, click **Add Component -> KitsuneBa -> Toggle Accelerator**.
 4. Add a **Toggle Group** for each menu control you want to create, drag in your target objects, and choose how they should respond.
 5. Hit **Play** or **Build & Publish** in the VRChat SDK. Toggle Accelerator automatically generates the required Animator layers, parameters, and VRChat Expressions Menu entries.
 
@@ -28,3 +28,5 @@ Whether you prefer working completely **Standalone**, integrating with **Modular
 * **Prefab-Ready with Automatic Re-Binding:** Toggle Accelerator stores relative hierarchy paths and automatically re-binds object references whenever a prefab or component is moved, duplicated, or dropped onto a new avatar.
 * **Exclusive Sets, Parameter Modifiers & Reactive Triggers:** Build one-at-a-time outfit selectors using shared parameter values, cross-toggle categories with `+Param` and `-Param` modifiers, or drive toggles automatically from PhysBone stretch parameters and reactive **Trigger Objects**.
 * **Interactive Menu Visualizer & Live Preview:** Inspect your entire VRChat Expressions Menu tree (including existing Modular Avatar and VRCFury items), convert third-party toggles in one click, and preview any toggle group live in the Scene view.
+* **Parameter Optimizer & Compression:** Bypass VRChat's 256-bit synced memory limit by automatically compressing excess avatar toggles into rotating sync batches and downscaling parameter bit sizes.
+* **Layer Optimizer:** Automatically moves non-animating logic layers from the FX controller to the Action controller to reduce avatar evaluation overhead.
