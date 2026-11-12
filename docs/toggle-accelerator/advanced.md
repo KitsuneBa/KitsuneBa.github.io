@@ -1,106 +1,124 @@
 ---
-sidebar_label: Build Modes & Helpers
+sidebar_label: Optimizers & Build Pipeline
 ---
 
-# Build Modes, Optimization & Helpers
+# Optimizers & Build Pipeline
 
-**Toggle Accelerator** adapts to your preferred avatar workflow and includes dedicated optimization modes and helper components for advanced menu and constraint management.
+**Toggle Accelerator** includes advanced optimization tools to keep avatar performance high, stay within VRChat's network memory limits, and adapt to any avatar creation workflow.
 
 ---
 
-## 🏗️ Build Modes
+## Parameter Optimizer (Param Opti)
 
-At the top of the **Toggle Accelerator** inspector, you can choose between four **Build Modes**:
+VRChat limits every avatar to **256 bits** of synced network memory for Expression Parameters. When avatars feature extensive wardrobes, hairstyles, and accessories, parameter memory is quickly exhausted.
+
+Toggle Accelerator includes a comprehensive **Parameter Optimization Hub** featuring three layers of parameter optimization:
+
+### 1. Dynamic Bit-Width Reduction
+- Enabled via the **Lower Synced Parameter Bit-Width on Build** toggle in the Parameter Hub.
+- Automatically analyzes all merged animators, transitions, and menus on your avatar at build time.
+- Clamps synced `Int` and `Float` parameters to their minimal required bit count. For example, a toggle that only switches between `0` and `1` is clamped from the standard 8-bit integer cost down to 1 or 2 bits, saving up to 75% parameter memory automatically.
+
+### 2. Explicit Bit-Width Override (`Value+Bits`)
+- In addition to automatic reduction, you can manually set the exact network bit allocation for any Toggle Group.
+- In the group's **Value** field, append `+Bits` (for example, `1+3` or `2+4`):
+  - `1+3` sets the target parameter value to `1` and allocates exactly `3 bits` (supporting up to 8 states: `0` through `7`).
+  - This saves 5 bits compared to a standard 8-bit parameter while giving you complete control over network budget.
+
+### 3. Multiplexed Parameter Optimizer
+For avatars with dozens or hundreds of toggles, the **Multiplexed Parameter Optimizer** compresses parameter memory beyond the 256-bit budget while maintaining full remote fidelity:
+
+- **How It Works:** Compresses synced parameters into local parameters for instant, 0ms local response on your client. Their values are then multiplexed and transmitted across rotating synced carrier channels to remote players with complete reliability.
+- **Targeting Modes:**
+  - **Manual Toggles:** Compresses only parameter groups that you explicitly mark for compression.
+  - **Excess Toggles:** Automatically compresses only the parameters that exceed your avatar's 256-bit budget, leaving remaining parameters uncompressed.
+  - **All Toggles:** Compresses all eligible avatar parameters into rotating carrier batches for maximum network memory savings.
+- **Batch Carrier Slots:** Choose between `8 Bools (1 Slot)` and `16 Bools (2 Slots)`.
+- **Cycle Refresh Speed:** Select `Fast (~0.05s)` for responsive syncing or `Normal (~0.10s)` for balanced network traffic.
+- **Parameter Inspection & Exclusions:** Inspect all avatar parameters, review their bit costs, and exclude sensitive parameters (such as OSC trackers or facial puppet floats) from compression with one click.
+
+---
+
+## Layer Optimizer (Layer Opti)
+
+In Unity Mecanim, every active layer in an avatar's FX Animator Controller adds frame evaluation overhead. Avatars with 50+ animator layers suffer from measurable frame drops.
+
+### The Problem: Non-Animating Logic Layers
+Many avatar layers do not actually animate transforms, blendshapes, or mesh properties. Instead, they purely execute logic:
+- `VRCAvatarParameterDriver` behaviors (calculating counters, setting toggles, managing math).
+- Audio triggers and sound playback.
+- Custom state machine tracking behaviors.
+
+Leaving dozens of non-animating logic layers inside the FX controller forces Mecanim to evaluate full layer blending matrices every frame, wasting CPU time.
+
+### The Action Layer Weight 0 Optimization
+In VRChat, `StateMachineBehaviour` scripts attached to states in the **Action** playable layer continue executing even when the layer's weight is set to `0.0`.
+
+At weight `0.0`, Mecanim completely skips transform blending and matrix calculations, eliminating runtime evaluation overhead while allowing all parameter drivers and state behaviors to run at full speed.
+
+### How Layer Optimizer Works
+1. Scans your avatar's FX controller at build time to identify non-animating logic layers.
+2. Clones those logic layers over to the Action Animator Controller, setting their default layer weight to `0.0` while ensuring graph execution.
+3. Removes the original logic layers from the FX controller.
+4. Keeps the FX controller ultra-lightweight, improves frame rates, and ensures all parameter drivers and logic continue functioning without disruption.
+
+---
+
+## Animator Optimization Modes
+
+Each Toggle Group can be assigned the optimization mode that best fits its purpose:
+
+### Direct BlendTrees (`AAP`)
+- Uses Animated Animator Parameters to pack multiple toggles and reactive **Trigger Object** conditions (`Any` or `Every`) into Direct BlendTrees.
+- Dozens of toggles and reactive rules run inside a minimal number of animator layers, keeping layer counts low.
+
+### Bake Mode
+- **What It Does:** Applies target changes directly to the avatar build copy at build time:
+  - GameObjects are permanently set active or inactive.
+  - BlendShape weights are permanently applied (and vertices marked with `DEL` are stripped).
+  - Material swaps and shader properties are baked directly into the rendered materials.
+- **Zero Runtime Overhead:** Baked groups generate 0 animator layers, 0 parameters, 0 clips, and 0 expression menu items.
+- **When to Use:** Use Bake for static outfit setups, permanent body proportions, removing hidden meshes beneath default clothes, or disabling unwanted avatar props without runtime cost.
+
+### Asset Optimizer
+- **What It Does:** A dedicated optimization feature that organizes external assets, props, and clothing items attached to the avatar.
+- When an avatar includes modular assets with their own animator controllers (such as Modular Avatar Merge Animators or VRCFury FullControllers), Asset Optimizer scans those controllers across target GameObjects and consolidates their layers and states into clean sub-state machines inside a unified layer.
+- Keeps controllers organized, prevents layer clutter, and maintains clean asset pipeline compatibility.
+
+### Optimize & None
+- **Optimize:** Automatically organizes standard 2-state toggles into consolidated layers to balance performance and flexibility.
+- **None:** Generates standard individual 2-state animator layers per toggle group for direct compatibility.
+
+---
+
+## Build Modes
+
+At the top of the Toggle Accelerator inspector, you can select between four **Build Modes**:
 
 1. **Standalone:**
-   * Non-destructively generates animator layers, clips, parameters, and expression menus automatically when you upload or test your avatar.
-   * Requires no external third-party avatar frameworks.
+   - Non-destructively generates animator layers, clips, parameters, and expression menus automatically when you upload or test your avatar.
+   - Requires no external third-party avatar frameworks.
 2. **Modular Avatar:**
-   * Generates native **Modular Avatar** components (`MA Menu Item`, `MA Merge Animator`, `MA Parameters`, `MA Shape Changer`, etc.) so your toggles integrate directly into a Modular Avatar pipeline.
+   - Generates native Modular Avatar components (`MA Menu Item`, `MA Merge Animator`, `MA Parameters`, `MA Shape Changer`, etc.) so your toggles integrate directly into a Modular Avatar pipeline.
 3. **VRCFury:**
-   * Generates native **VRCFury** Toggle and Full Controller components.
+   - Generates native VRCFury Toggle and Full Controller components.
 4. **Instant:**
-   * Immediately writes the generated Animator Controller, AnimationClips, Expression Parameters, and Expression Menus into your project's `Assets/!KitsuneBa/Temporary` folder so you can inspect or customize the raw Unity assets directly.
+   - Immediately writes the generated Animator Controller, AnimationClips, Expression Parameters, and Expression Menus into your project's `Assets/!KitsuneBa/Temporary` folder so you can inspect or customize raw Unity assets directly.
 
 ---
 
-## 🚀 Animator Optimization Modes
+## Quick Build & Full Build Testing
 
-Each Toggle Group can use the optimization strategy that best fits your avatar:
+In the footer of the inspector, you can generate an avatar test clone directly in your scene with one click to test your toggles in Gesture Manager or inspect generated assets:
 
-* **Optimize:** Consolidates toggles into efficient layer structures to keep frame time low.
-* **Bake:** Bakes static or single-state changes directly into the avatar at build time where possible, eliminating runtime animator overhead.
-* **AAP:** Uses Animated Animator Parameters to pack multiple toggles and reactive **Trigger Object** conditions (`Any` or `Every`) into Direct BlendTrees so dozens of toggles and reactive rules run in minimal animator layers.
-* **AssetOptimizer:** Structures layers for maximum compatibility with external build-time avatar optimizers.
-* **None:** Generates standard individual 2-state animator layers per toggle group.
+- **Quick Build:** Builds an editor test copy near-instantly by running VRChat SDK and Toggle Accelerator build hooks while skipping heavy external optimizers. This provides a fast test copy in seconds for rapid iteration.
+- **Full Build:** Builds a complete editor test copy with all pipeline components running in full.
 
----
-
-## 🎛️ Parameter Optimizer (Param Opti)
-
-VRChat limits avatars to 256 synced bits of parameter memory. If your avatar has many outfits, props, and toggles, you can easily hit this cap.
-
-Clicking **Param Opti** in the inspector footer opens a dedicated panel that automatically optimizes your synced memory during build time:
-
-### Dynamic Bit-Width
-* Synced integer parameters are automatically compressed to use only the bits they actually need (2 to 8 bits instead of always using a full 8 bits).
-* Synced float parameters are optimized down to 7 bits on supported VRChat SDK versions without any noticeable loss in smoothness.
-
-### Multiplex Parameter Compressor
-* Rotates multiple avatar toggles through shared carrier sync slots to pack dozens of toggles into a fraction of the memory.
-* **Targeting Modes:**
-  * **Excess Toggles (Recommended):** Only compresses the parameters that push your avatar over the 256-bit budget. Everything else stays completely uncompressed for instant 0-latency response.
-  * **All Toggles:** Compresses all eligible toggles to squeeze out maximum memory savings.
-  * **Manual Toggles:** Only compresses toggle groups you explicitly choose to include.
-* **Carrier Slots & Refresh Speeds:** Choose between 8 or 16 bool slots, and set refresh cycle speeds between Fast (~0.05s), Normal (~0.10s), or Slow (~0.20s).
-
-### Exclude/Include Parameters
-* A live table in the inspector displays every synced parameter on your avatar along with its bit cost and current compression status.
-* Built-in safeguards automatically protect Hand Gestures, Emotes, Contacts, PhysBones, Button controls, and Two/Four-Axis Puppets from compression.
-* Click **+ Include**, **- Exclude**, or **Cancel** directly in the table to override any parameter with one click.
+Both buttons automatically clone the avatar, run non-destructive preprocessing, disable the original avatar, and select the test copy in your hierarchy so you can immediately test it in Play Mode.
 
 ---
 
-## 🎭 Layer Optimizer (Layer Opti)
+## Menu Visualizer & Converter
 
-Clicking **Layer Opti** in the inspector footer enables automatic animator controller optimization:
-
-* Scans your FX controller during build time to find layers that only handle logic, tracking, or parameter transitions without animating any mesh transforms or blendshapes.
-* Safely migrates those behavior-only layers to the Action controller.
-* Reduces evaluation weight and overhead on the FX controller, helping your avatar run smoother in crowded worlds.
-
----
-
-## 🌳 Menu Visualizer & Third-Party Conversion
-
-* **Interactive Menu Tree:** The built-in menu visualizer displays your avatar's entire VRChat Expressions Menu layout right inside the inspector, including existing **Modular Avatar** and **VRCFury** menu items. You can rename menus and parameters inline and see page capacities at a glance.
-* **Scan & Convert Existing Toggles:** Toggle Accelerator can automatically scan your avatar for existing VRCFury and Modular Avatar toggles and convert them into Toggle Accelerator groups with one click.
-* **Live Scene Preview:** Toggle the preview icon on any group to immediately see its active state in the Scene view. Preview objects are tagged `EditorOnly` and automatically cleaned up before entering Play Mode or building.
-
----
-
-## ⚡ Quick Build & Full Build
-
-In the footer of the Toggle Accelerator inspector, you can generate an avatar test clone directly in your scene with one click to test your toggles in Gesture Manager or inspect the generated setup:
-
-* **Quick Build:** Builds an editor test copy near-instantly by running VRChat SDK and Toggle Accelerator build hooks while stripping heavy third-party optimizers (such as mesh combiners and texture bakes). This gives you a fast test copy in seconds without waiting for lengthy optimization steps.
-* **Full Build:** Builds a complete editor test copy with all components and third-party optimizers running in full.
-
-Both buttons automatically clone the avatar, run the non-destructive build preprocessing, disable the original avatar, and select the test copy in your hierarchy so you can immediately test it in Play Mode or inspect the generated Animator Controllers and parameters.
-
----
-
-## 🧰 Helper Components (Build Helpers)
-
-Toggle Accelerator is designed to work as a single main component on your avatar root or prefab. You do not need to add helper components manually.
-
-During the avatar build process, Toggle Accelerator automatically generates and manages helper components behind the scenes:
-
-### Toggle Accelerator World Freeze
-* An internal helper component automatically created and attached during the build pipeline to resolve world-space parent constraints after Modular Avatar and VRCFury finish their processing.
-* Implements `IEditorOnly` so it never uploads to VRChat or bloats avatar file size.
-* Can also be inspected or added manually if you need standalone world-space constraint freezing on custom bone chains with automatic hierarchy reference re-binding.
-
-### Toggle Accelerator Submenu Merger
-* Generated during the build pipeline to automatically redirect and merge nested expression submenus across prefabs and folders into the final VRCExpressionsMenu layout.
-* Ensures toggles distributed across multiple sub-prefabs integrate into cohesive menu folders without manual menu merging.
+- **Interactive Menu Tree:** The built-in menu visualizer displays your avatar's complete VRChat Expressions Menu layout inside the inspector, including menus from existing Modular Avatar and VRCFury items. You can inspect page capacities at a glance and track the 8-item menu limit.
+- **Scan & Convert Existing Toggles:** Toggle Accelerator can scan your avatar for existing VRCFury and Modular Avatar toggles and convert them into Toggle Accelerator groups with one click, bringing all avatar controls under one unified inspector.
