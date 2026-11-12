@@ -18,6 +18,23 @@ Your original Animator Controllers, Expression Parameters, Expression Menus, and
 
 ---
 
+### What happens when I drag a GameObject into a group's target list?
+When you drag an object in, Toggle Accelerator inspects whether the object is currently active or inactive in the scene:
+- If the object is currently **active**, the target is configured to turn it **OFF**.
+- If the object is currently **inactive**, the target is configured to turn it **ON**.
+
+You can click the green/red **ON/OFF** button next to any target at any time to switch its behavior, or hold **Alt** while clicking to batch switch all targets in the group.
+
+---
+
+### How do I test my toggles live in the Scene view?
+Live preview is enabled automatically in the Unity Scene view:
+- **Testing States:** Click the **Default** button on any group card. This flips its default state and immediately updates your avatar in the Scene view so you can test how clothes, props, and blendshapes look.
+- **Preview Button:** The **Preview** button located inside the extra controls dropdown (`▶`) is enabled by default. Clicking it turns preview **OFF** for that group if you want to inspect default meshes without preview overrides.
+- **Global Preview:** You can also click **Hide Preview** in the inspector footer to toggle previewing globally across the entire avatar.
+
+---
+
 ### How do I place a toggle inside a submenu or nested folder?
 Simply type forward slashes `/` directly into the **Toggle Name** field.
 
@@ -28,7 +45,7 @@ For example, entering `Clothing/Tops/Hoodie` will automatically create a `Clothi
 ### What is the difference between shared Parameter Values and Gating modifiers?
 Both allow you to coordinate multiple items, and they can be used together:
 
-- **Shared Parameter + Value (Single-Slot Radio):** Give multiple groups the exact same **Parameter Name** (such as `Shoes`) and assign each group a unique **Value** (`1`, `2`, `3`). Because a single parameter can hold only one number at a time, selecting Value `2` automatically turns off Value `1` and Value `3` while using only one parameter.
+- **Shared Parameter + Value (Single-Slot Radio):** Give multiple groups the exact same **Parameter Name** (such as `Shoes`) and assign each group a unique **Value** (`1`, `2`, `3`). Because a single parameter can hold only one number at a time, selecting Value `2` automatically turns off Value `1` and Value `3` while using only one parameter. Toggle Accelerator displays a red conflict highlight if duplicate parameter names and duplicate values are accidentally configured.
 - **Gating Modifiers (`+` and `-`):** Append `-OtherParam` or `+OtherParam` to the Parameter Name (for example, `Coat-Hoodie-Shirt` or `Shoes+Socks`). When this toggle turns ON, it automatically mutes or forces the target toggles without forcing them to share a single parameter.
 
 ---
@@ -42,7 +59,7 @@ In any group's **Value** field, you can append `+Bits` to override the network b
 ---
 
 ### What does the "Ungroup" button do?
-If you have a Toggle Group containing multiple target objects (such as multiple clothing parts or props) and decide you want separate menu buttons for each object, click **Ungroup**.
+If you have a Toggle Group containing multiple target objects (such as multiple clothing parts or props) and decide you want separate menu buttons for each object, click the arrow button (`▶`) and choose **Ungroup**.
 
 Toggle Accelerator immediately splits that group into individual, standalone toggle groups while preserving all parameters, target modes, and settings.
 
@@ -100,4 +117,4 @@ Both buttons clone the avatar, run non-destructive preprocessing, disable the or
 ---
 
 ### Can I convert my existing VRCFury or Modular Avatar toggles into Toggle Accelerator?
-Yes. Use the built-in scanner and converter in the Toggle Accelerator inspector to scan your avatar for existing VRCFury and Modular Avatar toggles and convert them into Toggle Accelerator groups with a single click.
+Yes. Click **Show Convert** in the inspector footer to scan your avatar for existing VRCFury and Modular Avatar toggles and convert them into Toggle Accelerator groups with a single click.

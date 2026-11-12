@@ -23,7 +23,7 @@ Toggle Accelerator includes a comprehensive **Parameter Optimization Hub** featu
 - In addition to automatic reduction, you can manually set the exact network bit allocation for any Toggle Group.
 - In the group's **Value** field, append `+Bits` (for example, `1+3` or `2+4`):
   - `1+3` sets the target parameter value to `1` and allocates exactly `3 bits` (supporting up to 8 states: `0` through `7`).
-  - This saves 5 bits compared to a standard 8-bit parameter while giving you complete control over network budget.
+  - This saves 5 bits compared to a standard 8-bit parameter while giving you complete control over your network budget.
 
 ### 3. Multiplexed Parameter Optimizer
 For avatars with dozens or hundreds of toggles, the **Multiplexed Parameter Optimizer** compresses parameter memory beyond the 256-bit budget while maintaining full remote fidelity:
@@ -66,9 +66,10 @@ At weight `0.0`, Mecanim completely skips transform blending and matrix calculat
 
 ## Animator Optimization Modes
 
-Each Toggle Group can be assigned the optimization mode that best fits its purpose:
+Each Toggle Group can be assigned the optimization mode that best fits its purpose via the **Optimize Mode** dropdown:
 
-### Direct BlendTrees (`AAP`)
+### Trigger Mode (`AAP` / Direct BlendTrees)
+- Labeled **Trigger** on the group card dropdown.
 - Uses Animated Animator Parameters to pack multiple toggles and reactive **Trigger Object** conditions (`Any` or `Every`) into Direct BlendTrees.
 - Dozens of toggles and reactive rules run inside a minimal number of animator layers, keeping layer counts low.
 
@@ -80,14 +81,14 @@ Each Toggle Group can be assigned the optimization mode that best fits its purpo
 - **Zero Runtime Overhead:** Baked groups generate 0 animator layers, 0 parameters, 0 clips, and 0 expression menu items.
 - **When to Use:** Use Bake for static outfit setups, permanent body proportions, removing hidden meshes beneath default clothes, or disabling unwanted avatar props without runtime cost.
 
-### Asset Optimizer
+### Asset Optimizer (`aOptimizer`)
 - **What It Does:** A dedicated optimization feature that organizes external assets, props, and clothing items attached to the avatar.
 - When an avatar includes modular assets with their own animator controllers (such as Modular Avatar Merge Animators or VRCFury FullControllers), Asset Optimizer scans those controllers across target GameObjects and consolidates their layers and states into clean sub-state machines inside a unified layer.
 - Keeps controllers organized, prevents layer clutter, and maintains clean asset pipeline compatibility.
 
-### Optimize & None
+### Optimize & Off
 - **Optimize:** Automatically organizes standard 2-state toggles into consolidated layers to balance performance and flexibility.
-- **None:** Generates standard individual 2-state animator layers per toggle group for direct compatibility.
+- **Off:** Generates standard individual 2-state animator layers per toggle group for direct compatibility.
 
 ---
 
@@ -107,18 +108,15 @@ At the top of the Toggle Accelerator inspector, you can select between four **Bu
 
 ---
 
-## Quick Build & Full Build Testing
+## Inspector Footer Tools
 
-In the footer of the inspector, you can generate an avatar test clone directly in your scene with one click to test your toggles in Gesture Manager or inspect generated assets:
+The footer of the Toggle Accelerator inspector provides convenient tools for testing and customization:
 
-- **Quick Build:** Builds an editor test copy near-instantly by running VRChat SDK and Toggle Accelerator build hooks while skipping heavy external optimizers. This provides a fast test copy in seconds for rapid iteration.
-- **Full Build:** Builds a complete editor test copy with all pipeline components running in full.
-
-Both buttons automatically clone the avatar, run non-destructive preprocessing, disable the original avatar, and select the test copy in your hierarchy so you can immediately test it in Play Mode.
-
----
-
-## Menu Visualizer & Converter
-
-- **Interactive Menu Tree:** The built-in menu visualizer displays your avatar's complete VRChat Expressions Menu layout inside the inspector, including menus from existing Modular Avatar and VRCFury items. You can inspect page capacities at a glance and track the 8-item menu limit.
-- **Scan & Convert Existing Toggles:** Toggle Accelerator can scan your avatar for existing VRCFury and Modular Avatar toggles and convert them into Toggle Accelerator groups with one click, bringing all avatar controls under one unified inspector.
+- **Quick Build:** Builds an editor test copy near-instantly by running VRChat SDK and Toggle Accelerator build hooks while skipping heavy external optimizers. This provides a fast test copy in seconds for rapid iteration and testing in Gesture Manager.
+- **Full Build:** Builds a complete editor test copy with all pipeline components and external optimizers running in full.
+- **Hide Preview / Show Preview:** Toggles live scene preview globally across the entire avatar (preview is enabled by default).
+- **Show Convert / Hide Convert:** Scans the avatar for existing VRCFury and Modular Avatar toggles and lets you convert them into Toggle Accelerator groups with one click.
+- **Show Menu / Hide Menu:** Opens the built-in Expressions Menu visualizer tree to inspect folder structures, page capacities, and the 8-item menu limit.
+- **Color:** Opens the Toggle Accelerator color picker to customize rich-text menu label colors.
+- **Layer Opti:** One-click button to toggle Layer Optimizer on or off.
+- **Param Opti:** Opens the Parameter Optimization Hub panel to configure dynamic bit-widths, multiplexed compression, and parameter exclusions.

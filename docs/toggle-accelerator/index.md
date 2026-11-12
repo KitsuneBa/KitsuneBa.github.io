@@ -17,8 +17,11 @@ Setting up a toggle takes just a few clicks:
 1. **Add the Component:** Select your avatar root (or any clothing/prop prefab in your avatar hierarchy), click **Add Component**, and choose **KitsuneBa -> Toggle Accelerator**.
 2. **Create a Toggle Group:** Click **Add Toggle Group** at the bottom of the inspector.
 3. **Name Your Toggle:** In the **Toggle Name** field, type the name that will appear in your VRChat radial menu (for example, `Glasses` or `Hat`).
-4. **Assign Your Target:** Drag the GameObject you want to toggle into the group's target list. Toggle Accelerator automatically selects **Toggle (TG)** mode and sets it to turn ON when the menu button is selected.
-5. **Test Your Toggle:** Click the **Preview** button on the group to test it live in the Scene view, or hit **Play** in Unity to test it in Gesture Manager.
+4. **Assign Your Target:** Drag the GameObject you want to toggle into the group's target list. Toggle Accelerator automatically selects **Toggle (TG)** mode and inspects the object's current state in the scene:
+   - If the object is currently active in the scene, the target sets to turn it **OFF**.
+   - If the object is currently inactive in the scene, the target sets to turn it **ON**.
+   - You can click the green/red **ON/OFF** button next to any target at any time to switch its behavior (or Alt-click to batch switch all targets in the group).
+5. **Test Your Toggle Live in Scene:** Live preview is automatically enabled in the editor. Click the **Default** button on the group card to toggle its starting state, and your avatar in the Scene view will immediately update live to show the change. You can also click **Quick Build** in the footer to test in Gesture Manager.
 
 When you upload your avatar or enter Play Mode, Toggle Accelerator automatically generates all required Animator layers, transitions, clips, parameters, and expression menu entries non-destructively.
 
@@ -49,7 +52,7 @@ Every toggle group features a built-in color picker next to its name field. Choo
 
 Toggle Accelerator can generate and export complete Unity assets directly from any toggle group:
 
-Inside any Toggle Group, click the **Create** button to open the asset generation menu:
+Inside any Toggle Group, click the arrow button (`▶`) to reveal extra controls, then click **Create** to open the asset generation menu:
 
 - **Animation:** Creates a new `.anim` clip pre-configured for this group's targets and adds it directly to the group.
 - **Controller:** Creates a standalone Unity `AnimatorController` containing configured states, default resting states, and transitions for this toggle.
@@ -87,8 +90,11 @@ To animate local position, rotation, or scale on any target object:
 
 ## Live Scene Preview
 
-Every Toggle Group includes a **Preview** button in the inspector:
+Toggle Accelerator features built-in, real-time Scene view previewing:
 
-- Clicking **Preview** immediately applies that group's active state in the Unity Scene view, showing you exactly how clothes fit, how props position, or how blendshapes look.
-- Live Preview respects **Gating** rules: if activating Group A is set to turn off Group B, turning on Group A's preview will automatically hide Group B in the scene.
-- Preview objects and state changes are tagged `EditorOnly` and are automatically restored to their default resting states whenever you enter Play Mode or build your avatar.
+- **Live Preview is Enabled by Default:** You do not need to enter Play Mode to see how toggles look.
+- **Testing with the Default Button:** Clicking the **Default** button on any group card flips its default state and immediately updates the avatar in the Scene view live.
+- **Disabling Group Preview:** Every group has a **Preview** button inside the extra controls dropdown (`▶`). Because preview is enabled by default, clicking **Preview** will turn preview OFF for that specific group if you want to inspect resting meshes without active preview overrides.
+- **Global Preview Toggle:** You can also click **Hide Preview** (or **Show Preview**) in the inspector footer to toggle previewing globally across the entire avatar.
+- **Gating Support in Preview:** Live preview fully evaluates **Gating** rules in real time. If activating an outfit is set to suppress an accessory, toggling Default on the outfit will hide the accessory in the Scene view automatically.
+- All preview overrides are non-destructive and cleaned up automatically before building or entering Play Mode.
