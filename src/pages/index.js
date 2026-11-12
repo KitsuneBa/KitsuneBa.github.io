@@ -39,7 +39,7 @@ function HomepageHero() {
             className={clsx('button', styles.buttonVcc)}
             href={VCC_DEEP_LINK}
           >
-            ⚡ Add to VCC / ALCOM
+            Add to VCC / ALCOM
           </a>
 
           <button
@@ -47,14 +47,14 @@ function HomepageHero() {
             className={clsx('button button--secondary', styles.buttonSecondary)}
             onClick={handleCopy}
           >
-            {copied ? '✅ Copied VPM URL!' : '📋 Copy VPM URL'}
+            {copied ? 'Copied VPM URL' : 'Copy VPM URL'}
           </button>
 
           <Link
             className={clsx('button button--outline button--secondary', styles.buttonSecondary)}
             to="/docs/intro"
           >
-            📖 Read Docs
+            Documentation
           </Link>
         </div>
       </div>
@@ -78,18 +78,21 @@ function ProductCards() {
         {/* Toggle Accelerator */}
         <div className={styles.toolCard}>
           <div className={styles.cardHeader}>
-            <span className={styles.cardIcon}>⚡</span>
+            <svg className={styles.cardIconSvg} width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="1" y="5" width="22" height="14" rx="7" ry="7" />
+              <circle cx="16" cy="12" r="3" />
+            </svg>
             <Heading as="h3" className={styles.cardTitle}>
               Toggle Accelerator
             </Heading>
           </div>
           <div className={styles.tagRow}>
-            <span className={styles.tag}>VRCFury</span>
-            <span className={styles.tag}>Modular Avatar</span>
             <span className={styles.tag}>Standalone</span>
+            <span className={styles.tag}>Modular Avatar</span>
+            <span className={styles.tag}>VRCFury</span>
           </div>
           <p className={styles.cardDescription}>
-            Speeds up the creation of toggles, radial puppets, material swaps, blendshapes, and world-space freezes for VRCFury, Modular Avatar, or standalone animator setups.
+            Build toggles, exclusive outfit sets, radial puppets, material swaps, and world freezes with smart gating, parameter compression, and zero manual animator wiring.
           </p>
           <div className={styles.cardFooter}>
             <Link
@@ -112,7 +115,11 @@ function ProductCards() {
         {/* Optimization Helper */}
         <div className={styles.toolCard}>
           <div className={styles.cardHeader}>
-            <span className={styles.cardIcon}>📊</span>
+            <svg className={styles.cardIconSvg} width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M18 20V10" />
+              <path d="M12 20V4" />
+              <path d="M6 20v-6" />
+            </svg>
             <Heading as="h3" className={styles.cardTitle}>
               Optimization Helper
             </Heading>
@@ -120,7 +127,7 @@ function ProductCards() {
           <div className={styles.tagRow}>
             <span className={styles.tag}>Performance</span>
             <span className={styles.tag}>VRAM & Materials</span>
-            <span className={styles.tag}>Analysis</span>
+            <span className={styles.tag}>Diagnostics</span>
           </div>
           <p className={styles.cardDescription}>
             Analyze avatar components, Animator Controllers, texture & mesh VRAM footprint, and optimize materials with one-click cleanup and compression tools.
@@ -146,7 +153,11 @@ function ProductCards() {
         {/* File Highlighter */}
         <div className={styles.toolCard}>
           <div className={styles.cardHeader}>
-            <span className={styles.cardIcon}>✨</span>
+            <svg className={styles.cardIconSvg} width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z" />
+              <path d="M12 11v6" />
+              <path d="M9 14h6" />
+            </svg>
             <Heading as="h3" className={styles.cardTitle}>
               File Highlighter
             </Heading>
@@ -154,10 +165,10 @@ function ProductCards() {
           <div className={styles.tagRow}>
             <span className={styles.tag}>Project Window</span>
             <span className={styles.tag}>Asset Tracking</span>
-            <span className={styles.tag}>Workflow</span>
+            <span className={styles.tag}>Organization</span>
           </div>
           <p className={styles.cardDescription}>
-            Automatically highlights newly imported, moved, or deleted folders and files directly in the Unity Project window with smooth fade-out timers and instant ping navigation.
+            Automatically highlights newly imported, moved, or deleted folders and files directly in the Unity Project window with smooth fade-out timers and native folder coloring.
           </p>
           <div className={styles.cardFooter}>
             <Link
@@ -168,7 +179,7 @@ function ProductCards() {
             </Link>
             <a
               className="button button--sm button--outline button--secondary"
-              href="https://github.com/KitsuneBa/FilesHighlighter"
+              href="https://github.com/KitsuneBa/FileHighlighter"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -180,7 +191,10 @@ function ProductCards() {
         {/* Auto Backup */}
         <div className={styles.toolCard}>
           <div className={styles.cardHeader}>
-            <span className={styles.cardIcon}>💾</span>
+            <svg className={styles.cardIconSvg} width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" />
+              <path d="m9 12 2 2 4-4" />
+            </svg>
             <Heading as="h3" className={styles.cardTitle}>
               Auto Backup
             </Heading>
@@ -188,7 +202,7 @@ function ProductCards() {
           <div className={styles.tagRow}>
             <span className={styles.tag}>Scene Safety</span>
             <span className={styles.tag}>Auto-Archive</span>
-            <span className={styles.tag}>Unity Utility</span>
+            <span className={styles.tag}>Utility</span>
           </div>
           <p className={styles.cardDescription}>
             Automatically archives timestamped copies of your Unity scenes whenever you save, organized cleanly by project, scene name, and date with configurable cooldowns.

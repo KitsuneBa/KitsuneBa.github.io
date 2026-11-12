@@ -4,29 +4,29 @@ sidebar_label: Settings & Backup Structure
 
 # Settings & Backup Structure
 
-You can customize where **Auto Backup** stores your scene archives and how frequently backups are created from **Tools → 🦊KitsuneBa's Tools🦊 → 🦊Auto Backup🦊**.
+You can configure where **Auto Backup** stores your scene archives and how frequently saves are captured from **Tools -> KitsuneBa's Tools -> Auto Backup**.
 
 ---
 
-## 🎛️ Window Controls
+## Window Controls
 
-* **Auto Backup Enabled / Disabled:**
-  * Click the status button at the top of the window to toggle automatic scene backups ON (green) or OFF (red) at any time.
-* **Backup Folder:**
-  * Displays the current root path where backups are saved (defaults to `Assets/!KitsuneBa/AutoBackup`).
-  * **Browse:** Select any folder inside or outside your Unity project, such as an external drive or cloud-synced backup folder.
-  * **Open:** Opens the current backup directory directly in Windows File Explorer.
-* **Cooldown:**
-  * Sets the minimum time in seconds between consecutive backups (default: `60s`).
-  * Use the `◀` and `▶` buttons to adjust in `5s` increments (`1s` increments below `5s`), or hold **Shift** while clicking for `10s` increments.
-* **Logs & Clear Logs:**
-  * Shows a scrollable history of timestamped backup events and cooldown skips, with a one-click **Clear Logs** button.
+- **Auto Backup Status:**
+  - Click the status button at the top of the window to toggle automatic scene backups ON or OFF at any time.
+- **Backup Destination Folder:**
+  - Displays the current root path where backups are saved (defaults to `Assets/!KitsuneBa/AutoBackup`).
+  - **Browse:** Select any directory on your computer, including external drives or cloud-synchronized folders.
+  - **Open:** Opens the current backup directory directly in Windows File Explorer.
+- **Cooldown Interval:**
+  - Sets the minimum cooldown duration in seconds between consecutive backups (default: `60s`).
+  - Use the arrow buttons to adjust in 5-second increments (1-second increments below 5 seconds), or hold **Shift** while clicking for 10-second increments.
+- **Logs & Clear Logs:**
+  - Displays a scrollable history of timestamped backup events and cooldown notices, with a one-click **Clear Logs** button to reset history.
 
 ---
 
-## 📂 Backup Folder Structure
+## Backup Directory Structure
 
-Every backup is automatically organized using the following folder and filename pattern:
+Every backup is organized cleanly using the following directory layout:
 
 ```text
 <BackupFolder>/
@@ -36,8 +36,9 @@ Every backup is automatically organized using the following folder and filename 
                 └── <SceneName>_<YYYY-MM-DD_HH-mm-ss>.unity
 ```
 
-### Restoring a Backup
-To restore an earlier version of your scene:
-1. Click **Open** in the Auto Backup window, or navigate to `Assets/!KitsuneBa/AutoBackup` in the Project window.
-2. Locate the date folder and timestamped `.unity` file you want to recover.
-3. Open the backup scene directly in Unity or copy it back to your working scenes folder.
+### Restoring an Earlier Scene
+To restore a previous version of your scene:
+
+1. Click **Open** in the Auto Backup window, or navigate to `Assets/!KitsuneBa/AutoBackup` in the Unity Project window.
+2. Locate the date folder and timestamped `.unity` file you wish to recover.
+3. Open the backup scene directly in Unity or copy it back to your primary scenes folder.

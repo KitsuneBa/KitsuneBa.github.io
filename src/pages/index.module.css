@@ -112,8 +112,9 @@
   margin-bottom: 1rem;
 }
 
-.cardIcon {
-  font-size: 2rem;
+.cardIconSvg {
+  color: var(--ifm-color-primary);
+  flex-shrink: 0;
 }
 
 .cardTitle {
