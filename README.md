@@ -4,13 +4,13 @@ Official documentation and showcase website for **KitsuneBa's Tools** (VRChat av
 
 Built with [Docusaurus](https://docusaurus.io/).
 
-## 🌐 Live Website
+## Live Website
 [https://kitsuneba.github.io](https://kitsuneba.github.io)
 
-## 📦 VPM Repository Listing
+## VPM Repository Listing
 To add the repository listing to VRChat Creator Companion (VCC) or ALCOM:
 * **Listing URL:** `https://kitsuneba.github.io/KitsuneBaTools/index.json`
 * **Listing Page:** https://kitsuneba.github.io/KitsuneBaTools/
 
-## 🚀 Deployment
+## Deployment
 Automatically built and deployed to GitHub Pages via GitHub Actions upon pushing to the `main` branch.
