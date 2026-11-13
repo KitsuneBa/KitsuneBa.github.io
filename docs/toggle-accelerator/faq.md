@@ -7,7 +7,7 @@ sidebar_label: FAQ & Troubleshooting
 ### Do I need VRCFury or Modular Avatar installed to use Toggle Accelerator?
 Yes, VRCFury and Modular Avatar should be present in your Unity project so that all direct integration assemblies compile cleanly.
 
-However, you are never locked into using them: Toggle Accelerator can build and run completely in its own native **Standalone** or **Instant** build mode without routing through either framework.
+However, you are never locked into using them: Toggle Accelerator can build and run completely in its own native **Standalone** build mode without routing through either framework.
 
 ---
 
@@ -45,7 +45,7 @@ Live preview is enabled automatically in the Unity Scene view:
 - **Editor Test Builds (Quick Build & Full Build):** Quick Build and Full Build are editor tests that allow you to inspect your avatar directly in the editor without entering Play Mode.
   - **Quick Build:** Strips external third-party tools and optimizers (keeping Unity, VRChat, VRCFury, Modular Avatar, and Toggle Accelerator), speeding up build preprocessing by roughly 4 times.
   - **Full Build:** Runs all tools and external optimizers in full.
-  - Both options create an editor test copy (`<AvatarName>(Clone)`) and disable the original avatar. When testing is finished, you can remove the clone and re-enable your avatar.
+  - Both options create an editor test copy and disable the original avatar. When testing is finished, you can remove the clone and re-enable your avatar.
 
 ---
 

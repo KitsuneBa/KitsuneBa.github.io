@@ -35,6 +35,11 @@
   display: none !important;
 }
 
+/* Ensure ordered lists always use decimal numbers */
+ol {
+  list-style-type: decimal !important;
+}
+
 /* Navbar styling */
 .navbar {
   border-bottom: 1px solid var(--ifm-color-emphasis-200);

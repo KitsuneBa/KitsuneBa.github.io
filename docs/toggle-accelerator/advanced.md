@@ -86,13 +86,15 @@ Each Toggle Group can be assigned the optimization mode that best fits its purpo
 - **When to Use:** Use Bake for static outfit setups, permanent body proportions, removing hidden meshes beneath default clothes, or disabling unwanted avatar props without runtime cost and without altering your original avatar.
 
 ### Asset Optimizer (`aOptimizer`)
-- **What It Does:** A dedicated optimization feature that organizes external assets, props, and clothing items attached to the avatar.
-- When an avatar includes modular assets with their own animator controllers (such as Modular Avatar Merge Animators or VRCFury FullControllers), Asset Optimizer consolidates their layers and states into clean sub-state machines inside a unified layer.
-- **How to Use:**
-  1. Set the group's Optimize Mode to **Asset Optimizer**.
-  2. Drag and drop your asset root GameObject (e.g. `Wand` or `Lollipop`) into the target drop area.
-  3. Define the asset's existing activation parameter name (the specific on/off parameter used by the asset to turn on and off).
-  4. On build, Toggle Accelerator excludes the inactive sub-state machines, allowing multiple assets to reuse the same controller layers and dramatically reducing layer bloat.
+A dedicated optimization feature that organizes external assets, props, and clothing items attached to the avatar.
+
+When an avatar includes modular assets with their own animator controllers (such as Modular Avatar Merge Animators or VRCFury FullControllers), Asset Optimizer consolidates their layers and states into clean sub-state machines inside a unified layer.
+
+#### How to Use
+1. Set the group's Optimize Mode to **Asset Optimizer**.
+2. Drag and drop your asset root GameObject (such as a wand, prop, or clothing prefab) into the target drop area.
+3. Define the asset's existing activation parameter name (the specific on/off parameter used by the asset to turn on and off).
+4. On build, Toggle Accelerator excludes the inactive sub-state machines, allowing multiple assets to reuse the same controller layers and dramatically reducing layer bloat.
 
 ### Optimize & Off
 - **Optimize:** Automatically organizes standard 2-state toggles into consolidated layers to balance performance and flexibility.
@@ -102,7 +104,7 @@ Each Toggle Group can be assigned the optimization mode that best fits its purpo
 
 ## Build Modes
 
-At the top of the Toggle Accelerator inspector, you can select between four **Build Modes**:
+At the top of the Toggle Accelerator inspector, you can choose between the following **Build Modes**:
 
 1. **Toggle Accelerator On Build (Standalone):**
    - Non-destructively generates animator layers, clips, parameters, and expression menus automatically when you upload or test your avatar.
