@@ -25,19 +25,19 @@ Each Toggle Group card provides an intuitive row of controls:
   - **sRadial (Stepped Radial):** Discrete stepped radial wheel for cycling through options.
 - **Optimize Mode Dropdown:** Select the optimization strategy for this group:
   - **Optimize:** Consolidated layer generation.
-  - **Bake:** Permanent build-time baking (0 runtime layers, 0 parameters, 0 clips).
-  - **Trigger (AAP):** Direct BlendTrees for multi-toggle packing and reactive trigger objects.
+  - **Bake:** Permanent build-time baking (0 runtime layers, 0 parameters, 0 menu items).
+  - **Trigger (AAP):** Reactive triggers where an object state (ON or OFF) drives target actions automatically.
   - **aOptimizer (Asset Optimizer):** Consolidates external modular asset controllers into sub-state machines.
   - **Off:** Standard individual 2-state animator layers.
 
 ### Extra Controls Menu (`▶`)
 Click the arrow button (`▶`) on any group card to reveal additional tools:
 
-- **Smooth:** Opens smooth transition settings (`Smooth Linear`, `Smooth Exponential`, `Bounce Linear`, `Bounce Exponential`, `Delay`), smooth value slider, and independent `Delay On` and `Delay Off` timers.
-- **Friend:** Restricts the visual effect so it is only visible to you and players on your VRChat friends list via `IsOnFriendsList`. Remote strangers see the avatar's default resting state.
+- **Smooth:** Opens smooth transition settings (`Smooth Linear`, `Smooth Exponential`, `Bounce Linear`, `Bounce Exponential`, `Delay`), smooth value slider, and independent `Delay On` and `Delay Off` timers. Smooth transitions run completely automatically in BlendTrees without manual keyframing.
+- **Friend:** Restricts the toggle so it is only visible to players on your VRChat friends list via `IsOnFriendsList`. Remote strangers see the avatar's default resting state. An internal bypass option allows completely skipping that security restriction when desired. This is recommended for toggles considered risky to use around strangers.
 - **Preview:** Live preview is enabled by default. Clicking **Preview** turns preview OFF for this specific group if you want to inspect default meshes without preview overrides.
-- **Create:** Opens the on-demand asset generation menu to export standalone `.anim` clips, Animator Controllers, `VRCExpressionsMenu`, `VRCExpressionParameters`, or Prefabs.
-- **Ungroup:** If a group contains multiple targets and you want separate menu buttons for each piece, clicking **Ungroup** explodes the group into individual standalone toggle groups while preserving all modes, parameters, and settings.
+- **Create:** Adds a single asset directly into Toggle Accelerator (Animation clip, Animator Controller, Expressions Menu, or Expression Parameters), or inserts pre-defined template prefabs that ship with the tool.
+- **Ungroup:** If a group contains multiple dropped objects, clicking **Ungroup** splits each object into its own individual toggle group, speeding up toggle creation.
 
 ---
 
@@ -66,67 +66,81 @@ The primary toggle mode combines GameObject activation, local Transform movement
 Controls any BlendShape on a `SkinnedMeshRenderer` with a target weight slider (`0` to `100`):
 
 - **Target Weight:** Adjust the target blendshape weight applied when the toggle is active.
-- **Mesh Deletion (`DEL`):** Set the weight to `DEL` (or enter `-1`). At build time, Toggle Accelerator permanently strips the vertices affected by that BlendShape from the mesh whenever the clothing is active. This eliminates body clipping beneath clothing and saves vertex processing without requiring manual mesh editing in 3D modeling software.
-- **ALL Checkbox:** When enabled, applies the blendshape weight across all renderers on the avatar that share that blendshape name.
+- **Mesh Deletion (`DEL`):** Set the weight to `DEL` (or enter `-1`). At build time, Toggle Accelerator permanently strips the vertices affected by that blendshape whenever the clothing or prop is active. This eliminates body clipping beneath clothes and saves vertex processing without modifying your source 3D models.
 
 ### 3. Material Swap (`MS`)
-Replaces the material in a specific **Material Slot Index** on a renderer:
+Swaps an entire material on a specific material slot of any `Renderer`:
 
-- **Slot Index:** Target the exact material slot on the renderer.
-- **Scope Modes:**
-  - `THIS`: Swaps the material only on the selected renderer.
-  - `SHAR`: Swaps the material across all renderers on the avatar that share that same material.
-  - `ALL`: Swaps matching materials across every renderer on the entire avatar.
+- **Material Slot:** Automatically detects how many material slots exist on the renderer and provides a dropdown to pick the slot.
+- **Replacement Material:** Drag in the replacement `Material`. When active, Toggle Accelerator swaps to this material; when inactive, it restores the default resting material.
 
 ### 4. Material Property (`MP`)
-Animates shader properties directly on materials without duplicating material assets:
+Directly animates individual shader properties without needing duplicate materials or full material swaps:
 
-- **Float / Range:** Animate shader sliders such as dissolve cutoffs, alpha transparency, or emission intensity.
-- **Color:** Animate standard or HDR color properties (such as `_Color` or `_EmissionColor`).
-- **Vector / ST:** Animate `Vector4` vectors or texture tiling and offset (`_MainTex_ST`).
+- **Property Name:** Enter the exact shader property (e.g. `_Color`, `_EmissionColor`, `_Cutoff`, `_Metallic`, `_Smoothness`).
+- **Property Types:**
+  - **Float:** Animate cutoff thresholds, smoothness, or intensity sliders.
+  - **Color:** Pick colors using an integrated Unity color picker (including HDR emission).
+  - **Vector / ST:** Animate texture tiling, offsets, or custom vector uniforms.
+- **Scope Dropdown:**
+  - **THIS:** Modifies only this specific Renderer.
+  - **SHAR:** Modifies all Renderers on the avatar that share this material.
+  - **ALL:** Modifies all Renderers across the entire avatar that have this shader property.
 
 ### 5. World Freeze (`WF`)
-Locks a target object, bone chain, or `SkinnedMeshRenderer` in world space when activated using VRChat parent constraints:
+Freezes an object, accessory, pet, or prop in global world space:
 
-- **Props & Drops:** Drop items, weapons, or pets into world space so they stay fixed in place as your avatar walks around.
-- **Skinned Mesh Freeze:** Freeze an entire outfit or character mesh in world space.
-- **Stylized Low-Framerate / Stop-Motion:** Combine World Freeze with **Bounce Linear** and short delay intervals to produce a stylized, low-framerate stop-motion animation effect in VRChat.
+- When toggled ON, the object remains stationary in world space regardless of how your avatar moves, walks, runs, or rotates.
+- When toggled OFF, the object snaps back to follow your avatar body cleanly.
+- Supports both static meshes and skinned meshes with zero drift.
 
 ---
 
-## Gating: Smart Suppression & Forced Activation
+## Animation Clips, Controllers & Path Modes (`RE` vs `AB`)
 
-**Gating** is Toggle Accelerator's built-in logic system that coordinates multiple toggles and clothing layers without writing complicated animator state machines.
+In addition to direct object toggles, you can assign external **Animation Clips** (`.anim`) or **Animator Controllers** (`.controller`) directly into any group target list:
 
-When an avatar has multiple outfits or overlapping accessories (for example, jackets, hoodies, shirts, bras, and pants), clipping occurs if conflicting items are worn at the same time. Gating resolves this cleanly by allowing any toggle to suppress or force other toggles.
+- **Layer Type:** Assign which VRChat playable layer executes the controller (defaults to **FX**).
+- **Path Mode (`RE` vs `AB`):**
+  - **AB (Absolute):** Binds animation property paths starting from the avatar descriptor root. Best suited for core avatar elements (such as body meshes, head, default hair, or standard base clothes).
+  - **RE (Relative):** Binds animation property paths starting from the GameObject where this Toggle Accelerator component is located. Ideal for modular clothing prefabs and asset packs organized under nested parent GameObjects.
+  - **Automatic Fallback Protection:** If an animation binding cannot be resolved in the selected mode at build time, Toggle Accelerator automatically swaps and tests the alternative mode (`AB` or `RE`) to make sure your toggles never break.
 
-### Gating Syntax in Parameter Names
+---
 
-You can append gate modifiers directly to any group's **Parameter Name**:
+## Gating System (Smart Outfit Mutual Exclusion)
 
-- **`-Param` (Gate Closed / Suppress / Mute):** When this toggle turns ON, it automatically mutes/disables the target toggle.
-  - *Example:* A heavy coat toggle with parameter `Coat-Hoodie-Shirt`. When `Coat` is active, both `Hoodie` and `Shirt` are automatically suppressed and hidden so they do not clip through the coat.
-- **`+Param` (Gate Forced / Force Active):** When this toggle turns ON, it automatically forces the target toggle ON.
-  - *Example:* A shoes toggle with parameter `Shoes+Socks`. When `Shoes` are turned ON, `Socks` are forced ON automatically.
-- **Chaining Multiple Gates:** You can chain as many modifiers as needed.
-  - *Example:* `Outfit-Bra-Panties+Socks` turns off `Bra` and `Panties` while forcing `Socks` on whenever `Outfit` is active.
+Avatar creators often face mutual exclusion dilemmas:
+- Wearing a **Coat** should automatically hide the **Shirt** beneath it.
+- Selecting a **Full Dress** should disable both the **Skirt** and the **Top**.
+- Enabling a **Jacket** should force the **Sleeves** to stay visible.
+
+In traditional setups, this requires dozens of animator states, condition variables, and nested transitions. Toggle Accelerator replaces this complexity with a simple **Gating System** directly inside the **Parameter Name** field.
+
+### Basic Syntax
+- `-TargetParam`: Automatically **turns OFF** the target parameter when this group turns ON.
+- `+TargetParam`: Automatically **turns ON** the target parameter when this group turns ON.
+
+### Practical Examples
+- **Suppressing Another Toggle:**
+  - Create a toggle named `Coat` with parameter `Coat-Hoodie`. When the `Coat` is turned ON, the `Hoodie` toggle is automatically forced OFF.
+- **Forcing Another Toggle:**
+  - Create a toggle named `Shoes` with parameter `Shoes+Socks`. When `Shoes` are turned ON, `Socks` are forced ON automatically.
+- **Chaining Multiple Gates:** You can chain as many modifiers as needed:
+  - `Outfit-Bra-Panties+Socks` turns off `Bra` and `Panties` while forcing `Socks` on whenever `Outfit` is active.
 
 ### Mutual Exclusion vs. Gating Overrides
-
-There are two primary ways to manage outfit options, and they can be combined:
-
-1. **Shared Parameter with Values (Single-Slot Radio):**
-   - Give multiple toggle groups the exact same **Parameter Name** (such as `Shoes`) and assign each group a unique **Value** (`1`, `2`, `3`).
-   - Because a single parameter can hold only one number at a time, selecting Value `2` automatically turns off Value `1` and Value `3`. This uses minimal synced memory.
-   - If duplicate parameter names and duplicate values are accidentally configured, Toggle Accelerator displays a red conflict highlight to alert you.
-2. **Explicit Bit-Width Override in the Value Field:**
-   - In the **Value** field, you can append `+Bits` (such as `1+3` or `2+4`) to explicitly allocate the network bit width for that parameter, giving you fine-grained memory control.
-3. **Cross-Category Gating with Modifiers:**
-   - Use `-TargetParam` when two independent categories need to interact.
-   - For example, you want `Tops` and `Jackets` to each have their own independent menu folders and toggles, but wearing `Jacket` should hide `Top`. Setting `Jacket-Top` hides the top when the jacket is worn without forcing them into a single restrictive parameter.
+- **Shared Parameter with Values (Single-Slot Radio):**
+  - Give multiple toggle groups the exact same **Parameter Name** (such as `Shoes`) and assign each group a unique **Value** (`1`, `2`, `3`).
+  - Selecting Value `2` automatically turns off Value `1` and Value `3`. This uses minimal synced memory.
+  - If duplicate parameter names and duplicate values are accidentally configured, Toggle Accelerator displays a red conflict highlight to alert you.
+- **Explicit Bit-Width Override in the Value Field:**
+  - In the **Value** field, you can append `+Bits` (such as `1+3` or `2+4`) to explicitly allocate the network bit width for that parameter, giving you fine-grained memory control.
+- **Cross-Category Gating with Modifiers:**
+  - Use `-TargetParam` when two independent categories need to interact (for example, independent `Tops` and `Jackets` menus where `Jacket-Top` hides the top without forcing both into one restrictive parameter).
 
 ### How Gating Works Under the Hood
-- In **Direct BlendTrees (AAP / Trigger Mode)**, Toggle Accelerator wraps target motions in gating Direct BlendTrees driven by internal parameters (`TA_Gate_...`). When the gate is closed, the weight is multiplied by 0, muting the motion cleanly without parameter race conditions.
+- In **Direct BlendTrees (Trigger / AAP Mode)**, Toggle Accelerator wraps target motions in gating BlendTrees driven by internal parameters (`TA_Gate_...`). When the gate is closed, the weight is multiplied by 0, muting the motion cleanly without parameter race conditions.
 - In **State Machines**, transitions check gate conditions so states switch smoothly.
 - In **Live Scene Preview**, Toggle Accelerator evaluates all gate dependencies live in the editor viewport so you immediately see suppressed and forced items update as you click the **Default** button.
 
@@ -135,6 +149,9 @@ There are two primary ways to manage outfit options, and they can be combined:
 ## Smooth Transitions & Delays
 
 Toggle Accelerator allows you to apply smooth easing, bouncing, or timed delays to any Toggle Group without manually crafting transition curves:
+
+### Automated BlendTree Smoothing
+Smooth Mode works completely automatically. It is generated in BlendTrees using internal smoothing logic to blend transitions slowly instead of instantly switching. You do not need to create or edit keyframes; simply choose your mode and enter a smooth value.
 
 ### Smooth Modes
 - **Off:** Instant switch between states.
@@ -153,22 +170,17 @@ Toggle Accelerator allows you to apply smooth easing, bouncing, or timed delays 
 
 ## Reactive Triggers & Trigger Objects
 
-Not every avatar action should require clicking a menu button. **Trigger Objects** and **PhysBone Stretch Triggers** allow your avatar to react automatically to physical interactions:
+In addition to regular radial menu toggles, Toggle Accelerator provides **Trigger Mode** (AAP) for reactive behaviors:
 
-### Trigger Objects
-Instead of (or in addition to) radial menu controls, you can add **Trigger Objects** to a group:
+### How Trigger Mode Works
+Trigger mode lets an object state (ON or OFF) automatically drive other target actions.
+- **Trigger Objects:** You assign one or more trigger objects to the group. Trigger mode checks whether those objects are currently active or inactive in the hierarchy.
+- **Requires a Driving Toggle:** The trigger itself does not create a menu button. It relies on another toggle group (or external asset) to toggle that specific trigger object ON or OFF.
+- **Target Actions:** When the trigger object reaches the required state, your target actions execute automatically (such as blendshape adjustments, unshrinking a torso, swapping materials, or toggling props).
+  - *Example:* When the `Top` clothing object is toggled OFF by its own outfit toggle, the Trigger group detects this and automatically unshrinks the torso blendshape to restore the base body shape.
 
-- **Any Condition Mode:** The group activates if **ANY** of the assigned trigger objects are active in the hierarchy.
+### Any vs. Every Condition Modes
+- **Any Condition Mode:** The target action triggers if **ANY** of the assigned trigger objects match the required on/off state.
   - *Example:* Automatically enable a chest shrink blendshape whenever ANY of three coats or jackets is worn.
-- **Every Condition Mode:** The group activates only when **ALL** assigned trigger objects are active simultaneously.
+- **Every Condition Mode:** The target action triggers only when **ALL** assigned trigger objects match the required state simultaneously.
   - *Example:* Reveal an exclusive accessory set only when all matching pieces (hat, jacket, and boots) are worn together.
-
-### PhysBone Stretch Triggers
-VRChat PhysBones automatically expose stretch parameters when grabbed and pulled:
-
-1. On your `VRCPhysBone` component, assign a Parameter name (e.g. `TopPull`). VRChat provides `TopPull_Stretch` (`0.0` to `1.0`).
-2. In Toggle Accelerator, create a Toggle Group with Parameter Name set to `+TopPull_Stretch`, enable **lRadial**, and set **Value** to your desired threshold (e.g. `0.85` for 85% stretch).
-3. Add your clothing blendshape or target object. When you or another player pulls the PhysBone past 85%, the reaction triggers automatically.
-
-### Contact Receivers
-You can drive any Toggle Group directly with a `VRCContactReceiver`. Simply enter the receiver's parameter name into the group's **Parameter Name** field. When another player's hand, head, or finger touches the contact, Toggle Accelerator smoothly activates your props, blendshapes, or effects.
